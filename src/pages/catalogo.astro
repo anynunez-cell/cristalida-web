@@ -167,7 +167,7 @@ const generos = ["Todos", "Poesía", "Narrativa", "Ensayo", "Infantil"];
 
 						<a href={libro.amazonUrl} target="_blank" rel="noopener" class="cover-link">
 							{libro.cover
-								? <img src={libro.cover} alt={`Portada de ${libro.title}`} class="book-cover" itemprop="image" />
+								? <img src={libro.cover} alt={`Portada de ${libro.title}`} class="book-cover" itemprop="image" loading="lazy" />
 								: <div class="book-cover-placeholder"><span>{libro.title[0]}</span></div>
 							}
 						</a>
