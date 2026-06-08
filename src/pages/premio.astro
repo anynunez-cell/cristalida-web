@@ -2,54 +2,206 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+// Ganadores de ediciones anteriores — agrega los reales aquí
+const edicionesAnteriores = [
+	// { year: 2024, titulo: "Título ganador", autor: "Nombre del autor", pais: "País" },
+	// { year: 2023, titulo: "Título ganador", autor: "Nombre del autor", pais: "País" },
+];
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title="Premio Cristálida de Poesía" description="Convocatoria anual de poesía de Cristálida Ediciones." />
+		<BaseHead
+			title="Premio Cristálida de Poesía — Cristálida Ediciones"
+			description="Convocatoria anual de poesía de Cristálida Ediciones. Abierto a poetas de todo el mundo hispanohablante con sede en Quebec, Canadá."
+		/>
 	</head>
 	<body>
 		<Header />
-		<main class="prose">
+		<main>
+
 			<div class="page-header">
+				<span class="eyebrow">Convocatoria abierta</span>
 				<h1>Premio Cristálida de Poesía</h1>
-				<p class="lead">Convocatoria anual abierta a poetas de todo el mundo hispanohablante.</p>
+				<p class="lead">Convocatoria anual abierta a poetas de todo el mundo hispanohablante. El libro ganador es publicado por Cristálida Ediciones.</p>
 			</div>
 
-			<section>
-				<h2>¿Qué es el Premio Cristálida?</h2>
-				<p>
-					El Premio Cristálida de Poesía es una convocatoria anual organizada por Cristálida Ediciones
-					con sede en Quebec, Canadá. Nació del deseo de crear un puente poético entre América Latina,
-					España y la diáspora hispanohablante en América del Norte.
-				</p>
-				<p>
-					El libro ganador es publicado por Cristálida Ediciones con distribución en Canadá y en línea.
-				</p>
-			</section>
-
-			<section>
+			<!-- BASES -->
+			<section class="card-section">
 				<h2>Bases de la convocatoria</h2>
-				<p class="placeholder">Las bases de la próxima edición se publicarán próximamente.</p>
+
+				<div class="bases-grid">
+					<div class="base-item">
+						<span class="base-icon">📝</span>
+						<h3>¿Quién puede participar?</h3>
+						<p>
+							Poetas de cualquier nacionalidad que escriban en español.
+							<!-- Agrega aquí los requisitos específicos de la convocatoria vigente -->
+						</p>
+					</div>
+					<div class="base-item">
+						<span class="base-icon">📚</span>
+						<h3>El manuscrito</h3>
+						<p>
+							<!-- Agrega aquí los requisitos del manuscrito: extensión, formato, etc. -->
+							Poemario inédito. Las especificaciones completas se publicarán con la convocatoria.
+						</p>
+					</div>
+					<div class="base-item">
+						<span class="base-icon">📅</span>
+						<h3>Fecha límite</h3>
+						<p>
+							<!-- Agrega aquí la fecha de cierre de la convocatoria vigente -->
+							Próximamente. Suscríbete al Substack para no perderte el anuncio.
+						</p>
+					</div>
+					<div class="base-item">
+						<span class="base-icon">🏆</span>
+						<h3>Premio</h3>
+						<p>
+							Publicación del poemario por Cristálida Ediciones con distribución en Canadá
+							y venta en línea a través de Amazon.
+						</p>
+					</div>
+				</div>
+
+				<div class="bases-nota">
+					<p>
+						Las bases completas de la convocatoria vigente se publicarán próximamente.
+						Puedes suscribirte a nuestra newsletter para recibir el anuncio en cuanto se abra la convocatoria.
+					</p>
+					<a href="https://cristalidaediciones.substack.com" target="_blank" rel="noopener" class="btn-primary">
+						Suscribirse al Substack
+					</a>
+				</div>
 			</section>
 
-			<section>
+			<!-- EDICIONES ANTERIORES -->
+			<section class="card-section">
 				<h2>Ediciones anteriores</h2>
-				<p class="placeholder">Los ganadores de ediciones anteriores se agregarán aquí.</p>
+				{edicionesAnteriores.length > 0
+					? (
+						<table class="ganadores-table">
+							<thead>
+								<tr>
+									<th>Año</th>
+									<th>Título</th>
+									<th>Autor/a</th>
+									<th>País</th>
+								</tr>
+							</thead>
+							<tbody>
+								{edicionesAnteriores.map(ed => (
+									<tr>
+										<td>{ed.year}</td>
+										<td>{ed.titulo}</td>
+										<td>{ed.autor}</td>
+										<td>{ed.pais}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					)
+					: <p class="placeholder">El archivo de ediciones anteriores se publicará próximamente.</p>
+				}
 			</section>
+
+			<!-- FORMULARIO DE DUDAS -->
+			<section class="card-section">
+				<h2>¿Tienes preguntas?</h2>
+				<p>Escríbenos y te responderemos a la brevedad.</p>
+				<form netlify name="premio-consulta" method="POST" class="contact-form">
+					<input type="hidden" name="form-name" value="premio-consulta" />
+					<div class="field">
+						<label for="nombre">Nombre</label>
+						<input type="text" id="nombre" name="nombre" required />
+					</div>
+					<div class="field">
+						<label for="email">Correo electrónico</label>
+						<input type="email" id="email" name="email" required />
+					</div>
+					<div class="field">
+						<label for="pregunta">Tu pregunta</label>
+						<textarea id="pregunta" name="pregunta" rows="5" required></textarea>
+					</div>
+					<button type="submit" class="btn-submit">Enviar pregunta</button>
+				</form>
+			</section>
+
 		</main>
 		<Footer />
 	</body>
 </html>
 
 <style>
-	.page-header {
-		margin-bottom: 3rem;
-		border-bottom: 1px solid rgba(61, 43, 107, 0.12);
-		padding-bottom: 2rem;
+	.page-header { margin-bottom: 3rem; border-bottom: 1px solid rgba(61,43,107,0.12); padding-bottom: 2rem; }
+	.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: var(--color-accent); font-weight: 700; display: block; margin-bottom: 0.5rem; }
+	.lead { font-size: 1.15rem; color: var(--color-muted); margin: 0; max-width: 600px; }
+
+	.card-section {
+		background: white;
+		border-radius: 8px;
+		padding: 2.5rem;
+		box-shadow: var(--box-shadow);
+		margin-bottom: 2.5rem;
 	}
-	.lead { font-size: 1.2rem; color: var(--color-muted); margin: 0; }
-	.prose section { margin-bottom: 3rem; }
+	.card-section h2 { margin-bottom: 1.5rem; }
+
+	.bases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+	.base-item { padding: 1.5rem; background: var(--color-bg); border-radius: 6px; border: 1px solid rgba(61,43,107,0.08); }
+	.base-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+	.base-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+	.base-item p { color: var(--color-muted); font-size: 0.95rem; margin: 0; }
+
+	.bases-nota { background: rgba(201, 168, 76, 0.1); border-left: 3px solid var(--color-accent); padding: 1.5rem; border-radius: 0 6px 6px 0; }
+	.bases-nota p { margin: 0 0 1rem; }
+	.btn-primary {
+		background: var(--color-primary);
+		color: white;
+		padding: 0.65rem 1.5rem;
+		border-radius: 4px;
+		font-weight: 600;
+		font-size: 0.95rem;
+		display: inline-block;
+		transition: background 0.2s;
+	}
+	.btn-primary:hover { background: var(--color-secondary); color: white; }
+
+	.ganadores-table { width: 100%; border-collapse: collapse; }
+	.ganadores-table th { text-align: left; padding: 0.75rem; border-bottom: 2px solid rgba(61,43,107,0.15); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); }
+	.ganadores-table td { padding: 0.75rem; border-bottom: 1px solid rgba(61,43,107,0.08); }
+
 	.placeholder { color: var(--color-muted); font-style: italic; }
+
+	/* Formulario */
+	.contact-form { display: flex; flex-direction: column; gap: 1.25rem; max-width: 560px; }
+	.field { display: flex; flex-direction: column; gap: 0.4rem; }
+	label { font-size: 0.9rem; font-weight: 600; color: var(--color-primary); }
+	input, textarea {
+		padding: 0.6rem 0.9rem;
+		border: 1.5px solid rgba(61,43,107,0.2);
+		border-radius: 4px;
+		font-family: var(--font-body);
+		font-size: 1rem;
+		color: var(--color-text);
+		background: white;
+		transition: border-color 0.2s;
+	}
+	input:focus, textarea:focus { outline: none; border-color: var(--color-secondary); }
+	.btn-submit {
+		background: var(--color-primary);
+		color: white;
+		border: none;
+		padding: 0.75rem 2rem;
+		border-radius: 4px;
+		font-size: 1rem;
+		font-family: var(--font-body);
+		font-weight: 600;
+		cursor: pointer;
+		transition: background 0.2s;
+		align-self: flex-start;
+	}
+	.btn-submit:hover { background: var(--color-secondary); }
 </style>

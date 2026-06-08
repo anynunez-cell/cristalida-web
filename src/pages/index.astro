@@ -1,8 +1,42 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const recentPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+
+// Libros recientes — reemplaza con los datos reales de tus 3 últimas publicaciones
+const librosRecientes = [
+	{
+		title: "El discurso de José Martí",
+		author: "Roberto Manzano",
+		year: 2025,
+		genre: "Poesía",
+		amazonUrl: "https://www.amazon.ca/dp/2925446604",
+		cover: null,
+	},
+	{
+		title: "Cuentos para Bárbara",
+		author: "Reyna Esperanza Cruz",
+		year: 2025,
+		genre: "Narrativa",
+		amazonUrl: "https://www.amazon.ca/dp/2925446329",
+		cover: null,
+	},
+	{
+		title: "Luciérnagas en el puente",
+		author: "Martha Rosa Fernández",
+		year: 2025,
+		genre: "Poesía",
+		amazonUrl: "https://www.amazon.ca/dp/B0G5N9JXQ8",
+		cover: null,
+	},
+];
 ---
 
 <!doctype html>
@@ -13,51 +47,133 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 
+		<!-- HERO -->
 		<section class="hero">
 			<div class="hero-inner">
-				<p class="hero-eyebrow">Editorial de poesía · Quebec</p>
+				<p class="hero-eyebrow">Editorial de poesía · Quebec, Canadá · desde 2021</p>
 				<h1>Donde la palabra<br/><em>se transforma</em></h1>
 				<p class="hero-description">
-					Cristálida Ediciones publica voces poéticas que atraviesan fronteras de lengua,
-					geografía e imaginación. Libros que son crisálidas: umbrales de metamorfosis.
+					Más de cien títulos publicados. Una comunidad de poetas radicados en Cuba,
+					en Canadá y en el mundo. La convicción de que la poesía es el método de
+					conocimiento más honesto que existe.
 				</p>
 				<div class="hero-cta">
 					<a href="/catalogo" class="btn btn-primary">Ver catálogo</a>
-					<a href="/premio" class="btn btn-outline">Premio Cristálida</a>
+					<a href="https://cristalidaediciones.substack.com" target="_blank" rel="noopener" class="btn btn-outline">
+						Suscribirse al Substack
+					</a>
 				</div>
 			</div>
 		</section>
 
 		<main>
-			<section class="section-grid">
-				<h2 class="section-title">Lo que hacemos</h2>
-				<div class="pillars">
-					<div class="pillar">
-						<div class="pillar-icon">📚</div>
-						<h3>Publicación</h3>
-						<p>Editamos libros de poesía con un cuidado artesanal: diseño, edición y distribución pensados desde la poesía misma.</p>
-						<a href="/catalogo">Ver catálogo →</a>
+
+			<!-- SOBRE CRISTÁLIDA -->
+			<section class="section sobre">
+				<div class="sobre-inner">
+					<div class="sobre-text">
+						<h2>Sobre Cristálida Ediciones</h2>
+						<p>
+							Cristálida Ediciones nació en Quebec en 2021 con una convicción: la palabra
+							poética transforma a quien la escribe y a quien la lee. Somos una comunidad de
+							creadores —radicados en Cuba, en Canadá y en el mundo— que publicamos con rigor
+							y con amor. Más de cien títulos después, seguimos creyendo que la poesía es el
+							método de conocimiento más honesto que existe.
+						</p>
+						<a href="/autores" class="link-arrow">Conocer a nuestros autores →</a>
 					</div>
-					<div class="pillar">
-						<div class="pillar-icon">🏆</div>
-						<h3>Premio Cristálida</h3>
-						<p>Convocatoria anual de poesía abierta a voces de todo el mundo hispanohablante, con sede en Quebec.</p>
-						<a href="/premio">Conocer el premio →</a>
-					</div>
-					<div class="pillar">
-						<div class="pillar-icon">✍️</div>
-						<h3>Formación poética</h3>
-						<p>Talleres, encuentros y espacios de creación para quienes quieren profundizar su práctica poética.</p>
-						<a href="/formacion">Ver talleres →</a>
+					<div class="sobre-stats">
+						<div class="stat">
+							<span class="stat-number">100+</span>
+							<span class="stat-label">títulos publicados</span>
+						</div>
+						<div class="stat">
+							<span class="stat-number">2021</span>
+							<span class="stat-label">fundada en Quebec</span>
+						</div>
+						<div class="stat">
+							<span class="stat-number">∞</span>
+							<span class="stat-label">voces en el mundo</span>
+						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="section-quote">
-				<blockquote>
-					"La poesía es el lugar donde el lenguaje recuerda que también puede ser silencio."
-				</blockquote>
+			<!-- ÚLTIMAS PUBLICACIONES -->
+			<section class="section">
+				<div class="section-header">
+					<h2>Últimas publicaciones</h2>
+					<a href="/catalogo" class="link-arrow">Ver catálogo completo →</a>
+				</div>
+				<div class="books-grid">
+					{librosRecientes.map(libro => (
+						<article class="book-card">
+							<a href={libro.amazonUrl} target="_blank" rel="noopener" class="book-cover-link">
+								{libro.cover
+									? <img src={libro.cover} alt={`Portada de ${libro.title}`} class="book-cover" />
+									: <div class="book-cover-placeholder"><span>{libro.title[0]}</span></div>
+								}
+							</a>
+							<div class="book-info">
+								<span class="book-genre">{libro.genre}</span>
+								<h3 class="book-title">{libro.title}</h3>
+								<p class="book-author">{libro.author} · {libro.year}</p>
+								<a href={libro.amazonUrl} target="_blank" rel="noopener" class="btn-amazon">
+									Ver en Amazon →
+								</a>
+							</div>
+						</article>
+					))}
+				</div>
 			</section>
+
+			<!-- BANNER PREMIO -->
+			<section class="premio-banner">
+				<div class="premio-inner">
+					<div>
+						<p class="premio-eyebrow">Convocatoria abierta</p>
+						<h2>Premio Cristálida de Poesía</h2>
+						<p>Anual · Abierto a poetas de todo el mundo hispanohablante · Publicación garantizada</p>
+					</div>
+					<a href="/premio" class="btn btn-accent">Ver bases →</a>
+				</div>
+			</section>
+
+			<!-- BLOG RECIENTE -->
+			{recentPosts.length > 0 && (
+				<section class="section">
+					<div class="section-header">
+						<h2>Del blog</h2>
+						<a href="/blog" class="link-arrow">Ver todos los artículos →</a>
+					</div>
+					<div class="posts-grid">
+						{recentPosts.map(post => (
+							<article class="post-card">
+								<a href={`/blog/${post.id}/`}>
+									<h3>{post.data.title}</h3>
+									<p class="post-date"><FormattedDate date={post.data.pubDate} /></p>
+									{post.data.description && <p class="post-excerpt">{post.data.description}</p>}
+								</a>
+							</article>
+						))}
+					</div>
+				</section>
+			)}
+
+			<!-- NEWSLETTER -->
+			<section class="newsletter">
+				<div class="newsletter-inner">
+					<h2>Un lugar llamado Cristálida</h2>
+					<p>
+						Nuestra newsletter en Substack: reflexiones sobre poesía, noticias de la editorial,
+						convocatorias y textos inéditos. Se publica cuando hay algo que vale la pena decir.
+					</p>
+					<a href="https://cristalidaediciones.substack.com" target="_blank" rel="noopener" class="btn btn-primary">
+						Suscribirse gratis
+					</a>
+				</div>
+			</section>
+
 		</main>
 
 		<Footer />
@@ -65,114 +181,128 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
-	.hero {
-		background: linear-gradient(135deg, var(--color-primary) 0%, #5C3D9E 100%);
-		color: var(--color-bg);
-		padding: 5rem 2rem;
-		text-align: center;
-	}
-	.hero-inner {
-		max-width: 700px;
-		margin: 0 auto;
-	}
-	.hero-eyebrow {
-		text-transform: uppercase;
-		letter-spacing: 0.15em;
-		font-size: 0.85rem;
-		color: var(--color-accent);
-		margin: 0 0 1rem;
-	}
-	.hero h1 {
-		font-size: clamp(2.5rem, 6vw, 4rem);
-		color: var(--color-bg);
-		margin: 0 0 1.5rem;
-		line-height: 1.15;
-	}
-	.hero h1 em {
-		color: var(--color-accent);
-		font-style: italic;
-	}
-	.hero-description {
-		font-size: 1.15rem;
-		color: rgba(250, 248, 255, 0.85);
-		margin: 0 0 2.5rem;
-		line-height: 1.7;
-	}
-	.hero-cta {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-	.btn {
-		padding: 0.75rem 2rem;
-		border-radius: 4px;
-		font-size: 1rem;
-		font-weight: 600;
-		transition: all 0.2s;
-		display: inline-block;
-	}
-	.btn-primary {
-		background: var(--color-accent);
-		color: var(--color-primary);
-	}
-	.btn-primary:hover {
-		background: #e0bc5a;
-		color: var(--color-primary);
-	}
-	.btn-outline {
-		border: 2px solid rgba(255,255,255,0.5);
-		color: var(--color-bg);
-	}
-	.btn-outline:hover {
-		border-color: var(--color-accent);
-		color: var(--color-accent);
-	}
+/* HERO */
+.hero {
+	background: linear-gradient(135deg, var(--color-primary) 0%, #5C3D9E 100%);
+	color: var(--color-bg);
+	padding: 5rem 2rem;
+	text-align: center;
+}
+.hero-inner { max-width: 700px; margin: 0 auto; }
+.hero-eyebrow {
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-size: 0.8rem;
+	color: var(--color-accent);
+	margin: 0 0 1rem;
+}
+.hero h1 {
+	font-size: clamp(2.5rem, 6vw, 4rem);
+	color: var(--color-bg);
+	margin: 0 0 1.5rem;
+	line-height: 1.15;
+}
+.hero h1 em { color: var(--color-accent); font-style: italic; }
+.hero-description {
+	font-size: 1.1rem;
+	color: rgba(250,248,255,0.85);
+	margin: 0 0 2.5rem;
+	line-height: 1.7;
+}
+.hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+	padding: 0.75rem 2rem;
+	border-radius: 4px;
+	font-size: 1rem;
+	font-weight: 600;
+	transition: all 0.2s;
+	display: inline-block;
+}
+.btn-primary { background: var(--color-accent); color: var(--color-primary); }
+.btn-primary:hover { background: #e0bc5a; color: var(--color-primary); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.5); color: var(--color-bg); }
+.btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.btn-accent { background: white; color: var(--color-primary); font-weight: 700; padding: 0.75rem 2rem; border-radius: 4px; white-space: nowrap; }
+.btn-accent:hover { background: var(--color-accent); color: var(--color-primary); }
 
-	.section-title {
-		text-align: center;
-		margin-bottom: 2.5rem;
-	}
-	.pillars {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-		gap: 2rem;
-	}
-	.pillar {
-		background: white;
-		border-radius: 8px;
-		padding: 2rem;
-		box-shadow: var(--box-shadow);
-		text-align: center;
-	}
-	.pillar-icon {
-		font-size: 2.5rem;
-		margin-bottom: 1rem;
-	}
-	.pillar h3 {
-		margin-bottom: 0.75rem;
-	}
-	.pillar p {
-		color: var(--color-muted);
-		font-size: 0.95rem;
-		margin-bottom: 1rem;
-	}
-	.pillar a {
-		font-size: 0.9rem;
-		font-weight: 600;
-		color: var(--color-secondary);
-	}
+/* SECTIONS */
+.section { margin-bottom: 4rem; }
+.section-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 2rem;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+.section-header h2 { margin: 0; }
+.link-arrow { font-size: 0.95rem; color: var(--color-secondary); font-weight: 600; }
+.link-arrow:hover { color: var(--color-accent); }
 
-	.section-quote {
-		text-align: center;
-		padding: 3rem 1rem;
-	}
-	.section-quote blockquote {
-		max-width: 600px;
-		margin: 0 auto;
-		border: none;
-		font-size: 1.6rem;
-		color: var(--color-secondary);
-	}
-	.section-quote blockquote::before { content: none; }
+/* SOBRE */
+.sobre { background: white; border-radius: 8px; padding: 3rem; box-shadow: var(--box-shadow); }
+.sobre-inner { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: center; }
+.sobre-text h2 { margin-bottom: 1rem; }
+.sobre-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+.stat { text-align: center; }
+.stat-number { display: block; font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-primary); font-weight: 700; line-height: 1; }
+.stat-label { font-size: 0.85rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* LIBROS */
+.books-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.book-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: var(--box-shadow); transition: transform 0.2s, box-shadow 0.2s; }
+.book-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(61,43,107,0.18); }
+.book-cover-link { display: block; }
+.book-cover { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
+.book-cover-placeholder {
+	width: 100%; aspect-ratio: 2/3;
+	background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+	display: flex; align-items: center; justify-content: center;
+}
+.book-cover-placeholder span { font-family: var(--font-heading); font-size: 5rem; color: rgba(255,255,255,0.25); }
+.book-info { padding: 1.25rem; }
+.book-genre { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 700; }
+.book-title { font-size: 1.05rem; margin: 0.25rem 0; color: var(--color-primary); }
+.book-author { color: var(--color-muted); font-size: 0.85rem; margin: 0 0 0.75rem; }
+.btn-amazon { font-size: 0.85rem; font-weight: 600; color: var(--color-secondary); }
+.btn-amazon:hover { color: var(--color-accent); }
+
+/* PREMIO BANNER */
+.premio-banner {
+	background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+	border-radius: 8px;
+	padding: 3rem;
+	margin-bottom: 4rem;
+	color: white;
+}
+.premio-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.premio-eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: var(--color-accent); margin: 0 0 0.5rem; }
+.premio-banner h2 { color: white; margin: 0 0 0.5rem; font-size: 1.8rem; }
+.premio-banner p { margin: 0; opacity: 0.85; font-size: 0.95rem; }
+
+/* BLOG */
+.posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.post-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: var(--box-shadow); transition: transform 0.2s; }
+.post-card:hover { transform: translateY(-2px); }
+.post-card a { display: block; }
+.post-card h3 { font-size: 1.1rem; margin: 0 0 0.4rem; color: var(--color-primary); }
+.post-card h3:hover { color: var(--color-accent); }
+.post-date { font-size: 0.8rem; color: var(--color-muted); margin: 0 0 0.5rem; }
+.post-excerpt { font-size: 0.9rem; color: var(--color-text); margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* NEWSLETTER */
+.newsletter { background: var(--color-primary); border-radius: 8px; padding: 3rem; text-align: center; margin-bottom: 2rem; }
+.newsletter-inner { max-width: 520px; margin: 0 auto; }
+.newsletter h2 { color: var(--color-bg); margin-bottom: 1rem; }
+.newsletter p { color: rgba(250,248,255,0.8); margin-bottom: 2rem; }
+
+@media (max-width: 900px) {
+	.books-grid, .posts-grid { grid-template-columns: repeat(2, 1fr); }
+	.sobre-inner { grid-template-columns: 1fr; }
+	.sobre-stats { flex-direction: row; justify-content: center; }
+}
+@media (max-width: 600px) {
+	.books-grid, .posts-grid { grid-template-columns: 1fr; }
+	.premio-inner { flex-direction: column; text-align: center; }
+}
 </style>

@@ -2,21 +2,89 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const BASE_IMG = "https://site-1891664.mozfiles.com/files/1891664/medium/";
+
+const autores = [
+	{ nombre: "Aldo Sánchez Herrera", desc: "Poeta y narrador cubano. Reside en Camagüey, Cuba.", img: BASE_IMG + "ALDO_SANCHEZ_HERRERA.jpg" },
+	{ nombre: "Ana Núñez González", desc: "Narradora y promotora cubana. Directora de Cristálida Ediciones. Reside en Amos, Canadá.", img: BASE_IMG + "ANA_NUNEZ_GONZALEZ.jpg", url: "https://ananunezgonzalez.com", destacada: true },
+	{ nombre: "Arístides Vega Chapú", desc: "Escritor, poeta y promotor cubano. Reside en Santa Clara, Cuba.", img: BASE_IMG + "ARISTIDES_VEGA_CHAPU.jpg" },
+	{ nombre: "Armando López Carralero", desc: "Poeta y promotor cubano. Reside en Las Tunas, Cuba.", img: BASE_IMG + "ARMANDO_LOPEZ_CARRALERO.jpg" },
+	{ nombre: "Benita López Peñate", desc: "Escritora y poeta canaria. Reside en Gran Canaria, Islas Canarias.", img: BASE_IMG + "Benita_digital.jpg" },
+	{ nombre: "Carmen Amelia del Cristo", desc: "Poeta y narradora cubana. Reside en La Habana, Cuba.", img: BASE_IMG + "CARMEN_AMELIA_DEL_CRISTO_VAZQUEZ.jpg" },
+	{ nombre: "Ediel Pérez Noguera", desc: "Poeta y promotor cubano. Reside en Miami, Estados Unidos.", img: BASE_IMG + "EDIEL_PEREZ_NOGUERA.jpg" },
+	{ nombre: "Efraín Riverón Argüelles", desc: "Repentista y escritor cubano. Reside en Miami, Estados Unidos.", img: BASE_IMG + "EFRAIN_RIVERON_ARGUELLES.jpg" },
+	{ nombre: "Heriberto Machado Galiana", desc: "Poeta y promotor cubano. Reside en Ciego de Ávila, Cuba.", img: BASE_IMG + "HERIBERTO_MACHADO_GALIANA.jpg" },
+	{ nombre: "Ivelisse Machín Torres", desc: "Escritora y poeta cubana. Reside en Sancti Spíritus, Cuba.", img: BASE_IMG + "IVELISSE_MACHIN_TORRES.jpg" },
+	{ nombre: "Jesús Lozada Guevara", desc: "Poeta, promotor, ensayista cubano. Importante narrador oral. Reside en La Habana, Cuba.", img: BASE_IMG + "JESUS_LOZADA_GUEVARA.jpg" },
+	{ nombre: "Julián Marcel Baldemira", desc: "Poeta y artista plástico cubano. Reside en Estados Unidos.", img: BASE_IMG + "JULIAN_MARCEL_BALDEMIRA_CELORRIO.jpg" },
+	{ nombre: "Leymen Pérez García", desc: "Poeta, editor y promotor cubano. Reside en Matanzas, Cuba.", img: BASE_IMG + "LEYMEN_PEREZ.jpg" },
+	{ nombre: "Lionel Valdivia Aguiar", desc: "Poeta y promotor cubano. Reside en Miami, Estados Unidos.", img: BASE_IMG + "LIONEL_VALDIVIA_AGUIAR.jpg" },
+	{ nombre: "María Iluminada González", desc: "Escritora y poeta cubana. Reside en La Habana, Cuba.", img: BASE_IMG + "MARIA_ILUMINADA_GONZALEZ.jpg" },
+	{ nombre: "María Liliana Celorrio", desc: "Poeta, narradora y promotora cubana. Reside en La Habana, Cuba.", img: BASE_IMG + "MARIA_LILIANA_CELORRIO_ZARAGOZA.jpg" },
+	{ nombre: "Mirtha Manzano Díaz", desc: "Doctora en Ciencias de la Comunicación. Profesora universitaria. Reside en Ecuador.", img: BASE_IMG + "MIRTHA_MANZANO_DIAZ.jpg" },
+	{ nombre: "Odalys Interián Guerra", desc: "Poeta, editora y promotora. Directora de la Editorial Dos Islas. Reside en Miami, Estados Unidos.", img: BASE_IMG + "OFDALYS_INTERIAN_GUERRA.jpg" },
+	{ nombre: "Pedro Péglez González", desc: "Poeta, promotor y periodista cubano. Director Fundador del Proyecto Ala Décima. Reside en La Habana, Cuba.", img: BASE_IMG + "PEDRO_PEGLEZ_GONZALEZ.jpg" },
+	{ nombre: "Reyna Esperanza Cruz", desc: "Poeta, narradora, editora y promotora. Codirectora de Molino Blanco Ediciones. Reside en La Habana, Cuba.", img: "https://site-1891664.mozfiles.com/files/1891664/reyna-5.jpg", destacada: true },
+	{ nombre: "Roberto Manzano Díaz", desc: "Poeta, ensayista y promotor cubano. Codirector de Molino Blanco Ediciones. Reside en La Habana, Cuba.", img: BASE_IMG + "ROBERTO_MANZANO.jpg", destacado: true },
+	{ nombre: "Sergio García Zamora", desc: "Escritor, poeta y promotor cubano. Fundador del Taller La estrella en germen. Reside en España.", img: BASE_IMG + "SERGIO_GARCIA_ZAMORA.jpg" },
+	{ nombre: "Valentín García Fernández", desc: "Poeta y narrador cubano. Reside en La Habana, Cuba.", img: BASE_IMG + "VALENTIN_GARCIA_FERNANDEZ.jpg" },
+	{ nombre: "Yandrey Lay Fabregat", desc: "Ensayista, narrador y periodista cubano. Reside en Santa Clara, Cuba.", img: BASE_IMG + "YANDREY_LAY_FABREGAT.jpg" },
+	{ nombre: "Yanelys Encinosa Cabrera", desc: "Poeta, ensayista y promotora cubana. Directora de Costanera Editorial. Reside en La Habana, Cuba.", img: BASE_IMG + "YANELYS_ENCINOSA_CABRERA.jpg" },
+	{ nombre: "Adalgiza Charria Quinte", desc: "Poeta, narradora, abogada y comunicadora social. Coeditora de Agenda Mujer Colombia y Codirectora de la Fundación Mujer Arte y Vida. Reside en Cali.", img: BASE_IMG + "fotoweb.jpg" },
+];
+
+function initials(name: string) {
+	return name.split(' ').slice(0, 2).map(w => w[0]).join('');
+}
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title="Autores — Cristálida Ediciones" description="Los poetas publicados por Cristálida Ediciones." />
+		<BaseHead title="Autores — Cristálida Ediciones" description="Una comunidad de trabajo creador. Los poetas y escritores publicados por Cristálida Ediciones." />
 	</head>
 	<body>
 		<Header />
 		<main>
 			<div class="page-header">
-				<h1>Autores</h1>
-				<p class="lead">Las voces que dan vida a nuestro catálogo.</p>
+				<h1>Una comunidad de trabajo creador</h1>
+				<p class="lead">Los autores y autoras publicados por Cristálida Ediciones.</p>
 			</div>
-			<p class="placeholder">Los perfiles de autores se agregarán próximamente.</p>
+
+			<div class="autores-grid">
+				{autores.map(autor => (
+					<article class="autor-card" itemscope itemtype="https://schema.org/Person">
+						<div class="autor-foto">
+							<img
+								src={autor.img}
+								alt={autor.nombre}
+								itemprop="image"
+								loading="lazy"
+								onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+							/>
+							<div class="foto-fallback" style="display:none">{initials(autor.nombre)}</div>
+						</div>
+						<div class="autor-info">
+							<h2 itemprop="name">
+								{autor.url
+									? <a href={autor.url} target="_blank" rel="noopener">{autor.nombre}</a>
+									: autor.nombre
+								}
+							</h2>
+							{(autor.destacado || autor.destacada) && (
+								<span class="badge">Autor destacado</span>
+							)}
+							<p itemprop="description">{autor.desc}</p>
+							{autor.url && (
+								<a href={autor.url} target="_blank" rel="noopener" class="autor-link">
+									{autor.url.replace('https://', '')} →
+								</a>
+							)}
+						</div>
+					</article>
+				))}
+			</div>
 		</main>
 		<Footer />
 	</body>
@@ -25,9 +93,91 @@ import Footer from '../components/Footer.astro';
 <style>
 	.page-header {
 		margin-bottom: 3rem;
-		border-bottom: 1px solid rgba(61, 43, 107, 0.12);
+		border-bottom: 1px solid rgba(61,43,107,0.12);
 		padding-bottom: 2rem;
 	}
-	.lead { font-size: 1.2rem; color: var(--color-muted); margin: 0; }
-	.placeholder { color: var(--color-muted); font-style: italic; }
+	.lead { font-size: 1.15rem; color: var(--color-muted); margin: 0; }
+
+	.autores-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.autor-card {
+		background: white;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: var(--box-shadow);
+		display: flex;
+		gap: 1rem;
+		padding: 1.25rem;
+		align-items: flex-start;
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.autor-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(61,43,107,0.15);
+	}
+
+	.autor-foto {
+		flex-shrink: 0;
+		width: 72px;
+		height: 72px;
+		border-radius: 50%;
+		overflow: hidden;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+	}
+	.autor-foto img {
+		width: 72px;
+		height: 72px;
+		object-fit: cover;
+		border-radius: 50%;
+	}
+	.foto-fallback {
+		width: 72px;
+		height: 72px;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--font-heading);
+		font-size: 1.4rem;
+		font-weight: 700;
+		color: rgba(255,255,255,0.5);
+	}
+
+	.autor-info { flex: 1; min-width: 0; }
+	.autor-info h2 {
+		font-size: 1rem;
+		margin: 0 0 0.25rem;
+		line-height: 1.3;
+	}
+	.autor-info h2 a { color: var(--color-primary); }
+	.autor-info h2 a:hover { color: var(--color-accent); }
+	.autor-info p {
+		font-size: 0.85rem;
+		color: var(--color-muted);
+		margin: 0.25rem 0 0;
+		line-height: 1.5;
+	}
+	.badge {
+		display: inline-block;
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-accent);
+		font-weight: 700;
+		margin-bottom: 0.2rem;
+	}
+	.autor-link {
+		font-size: 0.8rem;
+		color: var(--color-secondary);
+		font-weight: 600;
+		display: inline-block;
+		margin-top: 0.3rem;
+	}
+	.autor-link:hover { color: var(--color-accent); }
+
+	@media (max-width: 500px) {
+		.autores-grid { grid-template-columns: 1fr; }
+	}
 </style>

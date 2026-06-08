@@ -2,52 +2,164 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import BookCard from '../components/BookCard.astro';
 
+// Agrega aquí todos los libros del catálogo
 const libros = [
 	{
-		title: "Título del libro",
-		author: "Nombre del autor",
-		year: 2024,
-		excerpt: "Breve descripción del libro o fragmento poético que invite a la lectura.",
+		title: "El discurso de José Martí",
+		author: "Roberto Manzano",
+		year: 2025,
+		genre: "Poesía",
+		amazonUrl: "https://www.amazon.ca/dp/2925446604",
+		cover: null,
 	},
+	{
+		title: "Cuentos para Bárbara",
+		author: "Reyna Esperanza Cruz",
+		year: 2025,
+		genre: "Narrativa",
+		amazonUrl: "https://www.amazon.ca/dp/2925446329",
+		cover: null,
+	},
+	{
+		title: "Luciérnagas en el puente",
+		author: "Martha Rosa Fernández",
+		year: 2025,
+		genre: "Poesía",
+		amazonUrl: "https://www.amazon.ca/dp/B0G5N9JXQ8",
+		cover: null,
+	},
+	// Agrega aquí el resto del catálogo
 ];
+
+const generos = ["Todos", "Poesía", "Narrativa", "Ensayo", "Infantil"];
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title="Catálogo — Cristálida Ediciones" description="Todos los libros publicados por Cristálida Ediciones." />
+		<BaseHead title="Catálogo — Cristálida Ediciones" description="Todos los libros publicados por Cristálida Ediciones. Poesía, narrativa, ensayo e infantil." />
 	</head>
 	<body>
 		<Header />
 		<main>
 			<div class="page-header">
 				<h1>Catálogo</h1>
-				<p class="lead">Todos los libros que hemos publicado hasta hoy.</p>
+				<p class="lead">Todos los títulos publicados por Cristálida Ediciones.</p>
 			</div>
-			<div class="books-grid">
-				{libros.map(libro => <BookCard {...libro} />)}
+
+			<!-- Filtro por género -->
+			<div class="filtros" id="filtros">
+				{generos.map(g => (
+					<button class={`filtro-btn ${g === 'Todos' ? 'active' : ''}`} data-genre={g}>{g}</button>
+				))}
+			</div>
+
+			<!-- Grid de libros -->
+			<div class="books-grid" id="books-grid">
+				{libros.map(libro => (
+					<article
+						class="book-card"
+						data-genre={libro.genre}
+						itemscope
+						itemtype="https://schema.org/Book"
+					>
+						<meta itemprop="name" content={libro.title} />
+						<meta itemprop="author" content={libro.author} />
+						<meta itemprop="datePublished" content={String(libro.year)} />
+						<meta itemprop="genre" content={libro.genre} />
+						{libro.amazonUrl !== '#' && <link itemprop="url" href={libro.amazonUrl} />}
+
+						<a href={libro.amazonUrl} target="_blank" rel="noopener" class="cover-link">
+							{libro.cover
+								? <img src={libro.cover} alt={`Portada de ${libro.title}`} class="book-cover" itemprop="image" />
+								: <div class="book-cover-placeholder"><span>{libro.title[0]}</span></div>
+							}
+						</a>
+						<div class="book-info">
+							<span class="book-genre">{libro.genre}</span>
+							<h2 class="book-title" itemprop="name">{libro.title}</h2>
+							<p class="book-author" itemprop="author">{libro.author}</p>
+							<p class="book-year">{libro.year}</p>
+							{libro.amazonUrl !== '#' && (
+								<a href={libro.amazonUrl} target="_blank" rel="noopener" class="btn-amazon">
+									Comprar en Amazon →
+								</a>
+							)}
+						</div>
+					</article>
+				))}
 			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
 
+<script>
+	const btns = document.querySelectorAll<HTMLButtonElement>('.filtro-btn');
+	const cards = document.querySelectorAll<HTMLElement>('.book-card');
+
+	btns.forEach(btn => {
+		btn.addEventListener('click', () => {
+			btns.forEach(b => b.classList.remove('active'));
+			btn.classList.add('active');
+			const genre = btn.dataset.genre;
+			cards.forEach(card => {
+				const show = genre === 'Todos' || card.dataset.genre === genre;
+				card.style.display = show ? '' : 'none';
+			});
+		});
+	});
+</script>
+
 <style>
-	.page-header {
-		margin-bottom: 3rem;
-		border-bottom: 1px solid rgba(61, 43, 107, 0.12);
-		padding-bottom: 2rem;
+	.page-header { margin-bottom: 2rem; border-bottom: 1px solid rgba(61,43,107,0.12); padding-bottom: 2rem; }
+	.lead { font-size: 1.15rem; color: var(--color-muted); margin: 0; }
+
+	.filtros { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+	.filtro-btn {
+		padding: 0.4rem 1.2rem;
+		border: 1.5px solid rgba(61,43,107,0.25);
+		border-radius: 20px;
+		background: white;
+		color: var(--color-text);
+		font-family: var(--font-body);
+		font-size: 0.9rem;
+		cursor: pointer;
+		transition: all 0.2s;
 	}
-	.lead {
-		font-size: 1.2rem;
-		color: var(--color-muted);
-		margin: 0;
+	.filtro-btn:hover, .filtro-btn.active {
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+		color: white;
 	}
+
 	.books-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
 		gap: 2rem;
 	}
+	.book-card {
+		background: white;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: var(--box-shadow);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.book-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(61,43,107,0.18); }
+	.cover-link { display: block; }
+	.book-cover { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
+	.book-cover-placeholder {
+		width: 100%; aspect-ratio: 2/3;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+		display: flex; align-items: center; justify-content: center;
+	}
+	.book-cover-placeholder span { font-family: var(--font-heading); font-size: 4rem; color: rgba(255,255,255,0.2); }
+	.book-info { padding: 1rem; }
+	.book-genre { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 700; }
+	.book-title { font-size: 1rem; margin: 0.2rem 0; color: var(--color-primary); }
+	.book-author { color: var(--color-secondary); font-size: 0.85rem; font-weight: 600; margin: 0 0 0.1rem; }
+	.book-year { color: var(--color-muted); font-size: 0.8rem; margin: 0 0 0.75rem; }
+	.btn-amazon { font-size: 0.8rem; font-weight: 600; color: var(--color-secondary); }
+	.btn-amazon:hover { color: var(--color-accent); }
 </style>
