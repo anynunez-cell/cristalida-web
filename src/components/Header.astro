@@ -4,7 +4,10 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
-		<a href="/" class="logo">{SITE_TITLE}</a>
+		<a href="/" class="logo">
+			<img src="/images/logo/logo-cristalida.png" alt="Cristálida Ediciones" class="logo-img" />
+			<span class="logo-text">{SITE_TITLE}</span>
+		</a>
 		<button class="menu-toggle" aria-label="Abrir menú" id="menu-toggle">
 			<span></span><span></span><span></span>
 		</button>
@@ -45,14 +48,28 @@ import { SITE_TITLE } from '../consts';
 		height: 64px;
 	}
 	.logo {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		white-space: nowrap;
+	}
+	.logo:hover .logo-text { color: var(--color-accent); }
+	.logo-img {
+		height: 40px;
+		width: auto;
+		object-fit: contain;
+	}
+	.logo-text {
 		font-family: var(--font-heading);
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 700;
 		color: var(--color-bg);
 		letter-spacing: 0.02em;
-		white-space: nowrap;
+		transition: color 0.2s;
 	}
-	.logo:hover { color: var(--color-accent); }
+	@media (max-width: 480px) {
+		.logo-text { display: none; }
+	}
 	.nav-links {
 		display: flex;
 		gap: 0.25rem;
