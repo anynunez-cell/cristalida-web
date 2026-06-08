@@ -3,34 +3,43 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-// Agrega aquí todos los libros del catálogo
 const libros = [
-	{
-		title: "El discurso de José Martí",
-		author: "Roberto Manzano",
-		year: 2025,
-		genre: "Poesía",
-		amazonUrl: "https://www.amazon.ca/dp/2925446604",
-		cover: null,
-	},
-	{
-		title: "Cuentos para Bárbara",
-		author: "Reyna Esperanza Cruz",
-		year: 2025,
-		genre: "Narrativa",
-		amazonUrl: "https://www.amazon.ca/dp/2925446329",
-		cover: null,
-	},
-	{
-		title: "Luciérnagas en el puente",
-		author: "Martha Rosa Fernández",
-		year: 2025,
-		genre: "Poesía",
-		amazonUrl: "https://www.amazon.ca/dp/B0G5N9JXQ8",
-		cover: null,
-	},
-	// Agrega aquí el resto del catálogo
-];
+	// 2025
+	{ title: "El discurso de José Martí", author: "Roberto Manzano", year: 2025, genre: "Poesía", amazonUrl: "https://www.amazon.ca/dp/2925446604", cover: null },
+	{ title: "Cuentos para Bárbara", author: "Reyna Esperanza Cruz", year: 2025, genre: "Narrativa", amazonUrl: "https://www.amazon.ca/dp/2925446329", cover: "/images/portadas-ok/cuentos-barbara.jpg" },
+	{ title: "Luciérnagas en el puente", author: "Martha Rosa Fernández", year: 2025, genre: "Poesía", amazonUrl: "https://www.amazon.ca/dp/B0G5N9JXQ8", cover: "/images/portadas-ok/luciernagas-puente.jpg" },
+	{ title: "Los ojos del silencio", author: "Pepe Sánchez", year: 2025, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/ojos-silencio.jpg" },
+	{ title: "Mujeres rotas", author: "Ana Luna", year: 2025, genre: "Narrativa", amazonUrl: "", cover: "/images/portadas-ok/mujeres-rotas.jpg" },
+	// 2024
+	{ title: "Las coplas del juntador", author: "Roberto Manzano", year: 2024, genre: "Poesía", amazonUrl: "", cover: null },
+	{ title: "El reloj y la sombra", author: "Margarita Padrón", year: 2024, genre: "Poesía", amazonUrl: "", cover: null },
+	{ title: "Frascuelo, el perro fiero", author: "Guillermo Núñez Llana", year: 2024, genre: "Narrativa", amazonUrl: "", cover: "/images/portadas-ok/frascuelo.jpg" },
+	{ title: "El fulgor de las páginas", author: "Cristálida Ediciones", year: 2024, genre: "Ensayo", amazonUrl: "", cover: "/images/portadas-ok/fulgor.png" },
+	// 2023
+	{ title: "Canto a la sabana", author: "Roberto Manzano", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/canto-sabana.jpg" },
+	{ title: "Synergos", author: "Roberto Manzano", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/synergos.jpg" },
+	{ title: "Juegos de tierra y mar", author: "Reyna Esperanza Cruz", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/juegos-tierra-mar.jpg" },
+	{ title: "Reminiscencias", author: "Ivelisse Machín Torres", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/reminiscencias.jpg" },
+	{ title: "Una marea más alta", author: "Mar Silva", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/marea-alta.jpg" },
+	{ title: "Espacios rotos", author: "Lisandra Navas", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/espacios-rotos.jpg" },
+	{ title: "Siete golpes en la mesa", author: "Sergio García Zamora", year: 2022, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/siete-golpes.jpg" },
+	{ title: "Caída libre", author: "Aldo Sánchez Herrera", year: 2022, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/caida-libre.jpg" },
+	{ title: "Poemas desobedientes", author: "David Robinson", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/poemas-desobedientes.jpg" },
+	{ title: "Sicomoro que arde como un astro", author: "Odalys Interián", year: 2022, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/sicomoro.jpg" },
+	{ title: "Edificio Cuba", author: "Arístides Vega Chapú", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/edificio-cuba.jpg" },
+	{ title: "Aturdido por la sal", author: "Efraín Riverón Argüelles", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/aturdido-sal.jpg" },
+	{ title: "Decantaciones", author: "Herbert Toranzo", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/decantaciones.jpg" },
+	{ title: "Efectos secundarios", author: "Leymen Pérez", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/efectos-secundarios.jpg" },
+	{ title: "Sermón de pájaros", author: "Adalgiza Charria Quinte", year: 2023, genre: "Poesía", amazonUrl: "", cover: "/images/portadas-ok/sermon-pajaros.jpg" },
+	{ title: "Adela y el poder", author: "Ana Luna", year: 2023, genre: "Narrativa", amazonUrl: "", cover: "/images/portadas-ok/adela-poder.png" },
+	{ title: "Apasanka", author: "Camila Reimers", year: 2023, genre: "Narrativa", amazonUrl: "", cover: "/images/portadas-ok/apasanka.jpg" },
+	{ title: "El trigo y la cizaña", author: "Jesús Lozada Guevara", year: 2023, genre: "Ensayo", amazonUrl: "", cover: "/images/portadas-ok/trigo-cizana.jpg" },
+	// Infantil
+	{ title: "Estación ajena", author: "Aurora de Celia", year: 2023, genre: "Infantil", amazonUrl: "", cover: null },
+	{ title: "Alforja de la vida", author: "Zoila Portuondo Guerra", year: 2023, genre: "Poesía", amazonUrl: "", cover: null },
+	{ title: "Prólogos no solicitados", author: "Daniel Céspedes Góngora", year: 2023, genre: "Ensayo", amazonUrl: "", cover: null },
+	{ title: "Ergonomía artística", author: "Roberto Manzano", year: 2023, genre: "Ensayo", amazonUrl: "", cover: null },
+].filter(l => l.title !== "PLACEHOLDER" && l.year > 0);
 
 const generos = ["Todos", "Poesía", "Narrativa", "Ensayo", "Infantil"];
 ---
