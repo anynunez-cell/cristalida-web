@@ -1,0 +1,33 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title="Autores — Cristálida Ediciones" description="Los poetas publicados por Cristálida Ediciones." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<h1>Autores</h1>
+				<p class="lead">Las voces que dan vida a nuestro catálogo.</p>
+			</div>
+			<p class="placeholder">Los perfiles de autores se agregarán próximamente.</p>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		margin-bottom: 3rem;
+		border-bottom: 1px solid rgba(61, 43, 107, 0.12);
+		padding-bottom: 2rem;
+	}
+	.lead { font-size: 1.2rem; color: var(--color-muted); margin: 0; }
+	.placeholder { color: var(--color-muted); font-style: italic; }
+</style>

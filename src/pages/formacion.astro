@@ -1,0 +1,42 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title="Formación Poética — Cristálida Ediciones" description="Talleres y espacios de formación poética de Cristálida Ediciones." />
+	</head>
+	<body>
+		<Header />
+		<main class="prose">
+			<div class="page-header">
+				<h1>Formación Poética</h1>
+				<p class="lead">Espacios de creación y profundización para poetas en todos sus momentos.</p>
+			</div>
+
+			<section>
+				<h2>Talleres y encuentros</h2>
+				<p>
+					Cristálida Ediciones organiza talleres de escritura poética, encuentros con autores y
+					seminarios de lectura en formato presencial en Quebec y en línea para cualquier parte del mundo.
+				</p>
+				<p class="placeholder">La programación de talleres se publicará próximamente.</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		margin-bottom: 3rem;
+		border-bottom: 1px solid rgba(61, 43, 107, 0.12);
+		padding-bottom: 2rem;
+	}
+	.lead { font-size: 1.2rem; color: var(--color-muted); margin: 0; }
+	.prose section { margin-bottom: 3rem; }
+	.placeholder { color: var(--color-muted); font-style: italic; }
+</style>

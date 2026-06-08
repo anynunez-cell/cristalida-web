@@ -6,44 +6,173 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
+
+		<section class="hero">
+			<div class="hero-inner">
+				<p class="hero-eyebrow">Editorial de poesía · Quebec</p>
+				<h1>Donde la palabra<br/><em>se transforma</em></h1>
+				<p class="hero-description">
+					Cristálida Ediciones publica voces poéticas que atraviesan fronteras de lengua,
+					geografía e imaginación. Libros que son crisálidas: umbrales de metamorfosis.
+				</p>
+				<div class="hero-cta">
+					<a href="/catalogo" class="btn btn-primary">Ver catálogo</a>
+					<a href="/premio" class="btn btn-outline">Premio Cristálida</a>
+				</div>
+			</div>
+		</section>
+
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="section-grid">
+				<h2 class="section-title">Lo que hacemos</h2>
+				<div class="pillars">
+					<div class="pillar">
+						<div class="pillar-icon">📚</div>
+						<h3>Publicación</h3>
+						<p>Editamos libros de poesía con un cuidado artesanal: diseño, edición y distribución pensados desde la poesía misma.</p>
+						<a href="/catalogo">Ver catálogo →</a>
+					</div>
+					<div class="pillar">
+						<div class="pillar-icon">🏆</div>
+						<h3>Premio Cristálida</h3>
+						<p>Convocatoria anual de poesía abierta a voces de todo el mundo hispanohablante, con sede en Quebec.</p>
+						<a href="/premio">Conocer el premio →</a>
+					</div>
+					<div class="pillar">
+						<div class="pillar-icon">✍️</div>
+						<h3>Formación poética</h3>
+						<p>Talleres, encuentros y espacios de creación para quienes quieren profundizar su práctica poética.</p>
+						<a href="/formacion">Ver talleres →</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-quote">
+				<blockquote>
+					"La poesía es el lugar donde el lenguaje recuerda que también puede ser silencio."
+				</blockquote>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero {
+		background: linear-gradient(135deg, var(--color-primary) 0%, #5C3D9E 100%);
+		color: var(--color-bg);
+		padding: 5rem 2rem;
+		text-align: center;
+	}
+	.hero-inner {
+		max-width: 700px;
+		margin: 0 auto;
+	}
+	.hero-eyebrow {
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		font-size: 0.85rem;
+		color: var(--color-accent);
+		margin: 0 0 1rem;
+	}
+	.hero h1 {
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		color: var(--color-bg);
+		margin: 0 0 1.5rem;
+		line-height: 1.15;
+	}
+	.hero h1 em {
+		color: var(--color-accent);
+		font-style: italic;
+	}
+	.hero-description {
+		font-size: 1.15rem;
+		color: rgba(250, 248, 255, 0.85);
+		margin: 0 0 2.5rem;
+		line-height: 1.7;
+	}
+	.hero-cta {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.btn {
+		padding: 0.75rem 2rem;
+		border-radius: 4px;
+		font-size: 1rem;
+		font-weight: 600;
+		transition: all 0.2s;
+		display: inline-block;
+	}
+	.btn-primary {
+		background: var(--color-accent);
+		color: var(--color-primary);
+	}
+	.btn-primary:hover {
+		background: #e0bc5a;
+		color: var(--color-primary);
+	}
+	.btn-outline {
+		border: 2px solid rgba(255,255,255,0.5);
+		color: var(--color-bg);
+	}
+	.btn-outline:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.section-title {
+		text-align: center;
+		margin-bottom: 2.5rem;
+	}
+	.pillars {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 2rem;
+	}
+	.pillar {
+		background: white;
+		border-radius: 8px;
+		padding: 2rem;
+		box-shadow: var(--box-shadow);
+		text-align: center;
+	}
+	.pillar-icon {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	.pillar h3 {
+		margin-bottom: 0.75rem;
+	}
+	.pillar p {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		margin-bottom: 1rem;
+	}
+	.pillar a {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--color-secondary);
+	}
+
+	.section-quote {
+		text-align: center;
+		padding: 3rem 1rem;
+	}
+	.section-quote blockquote {
+		max-width: 600px;
+		margin: 0 auto;
+		border: none;
+		font-size: 1.6rem;
+		color: var(--color-secondary);
+	}
+	.section-quote blockquote::before { content: none; }
+</style>

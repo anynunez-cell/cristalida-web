@@ -1,0 +1,93 @@
+---
+interface Props {
+	title: string;
+	author: string;
+	year: number;
+	cover?: string;
+	slug?: string;
+	excerpt?: string;
+}
+const { title, author, year, cover, slug, excerpt } = Astro.props;
+---
+
+<article class="book-card">
+	<a href={slug ? `/catalogo/${slug}` : '#'} class="book-cover-link">
+		{cover
+			? <img src={cover} alt={`Portada de ${title}`} class="book-cover" />
+			: <div class="book-cover-placeholder"><span>{title[0]}</span></div>
+		}
+	</a>
+	<div class="book-info">
+		<h3 class="book-title">
+			<a href={slug ? `/catalogo/${slug}` : '#'}>{title}</a>
+		</h3>
+		<p class="book-author">{author}</p>
+		<p class="book-year">{year}</p>
+		{excerpt && <p class="book-excerpt">{excerpt}</p>}
+	</div>
+</article>
+
+<style>
+	.book-card {
+		display: flex;
+		flex-direction: column;
+		background: white;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: var(--box-shadow);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.book-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(61, 43, 107, 0.18);
+	}
+	.book-cover-link { display: block; }
+	.book-cover {
+		width: 100%;
+		aspect-ratio: 2/3;
+		object-fit: cover;
+	}
+	.book-cover-placeholder {
+		width: 100%;
+		aspect-ratio: 2/3;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.book-cover-placeholder span {
+		font-family: var(--font-heading);
+		font-size: 4rem;
+		color: rgba(255,255,255,0.3);
+	}
+	.book-info {
+		padding: 1.25rem;
+		flex: 1;
+	}
+	.book-title {
+		font-size: 1.1rem;
+		margin: 0 0 0.25rem;
+	}
+	.book-title a { color: var(--color-primary); }
+	.book-title a:hover { color: var(--color-accent); }
+	.book-author {
+		color: var(--color-secondary);
+		font-size: 0.9rem;
+		margin: 0 0 0.1rem;
+		font-weight: 600;
+	}
+	.book-year {
+		color: var(--color-muted);
+		font-size: 0.85rem;
+		margin: 0 0 0.75rem;
+	}
+	.book-excerpt {
+		font-size: 0.9rem;
+		color: var(--color-text);
+		margin: 0;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>

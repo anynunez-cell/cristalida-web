@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title="Premio Cristálida de Poesía" description="Convocatoria anual de poesía de Cristálida Ediciones." />
+	</head>
+	<body>
+		<Header />
+		<main class="prose">
+			<div class="page-header">
+				<h1>Premio Cristálida de Poesía</h1>
+				<p class="lead">Convocatoria anual abierta a poetas de todo el mundo hispanohablante.</p>
+			</div>
+
+			<section>
+				<h2>¿Qué es el Premio Cristálida?</h2>
+				<p>
+					El Premio Cristálida de Poesía es una convocatoria anual organizada por Cristálida Ediciones
+					con sede en Quebec, Canadá. Nació del deseo de crear un puente poético entre América Latina,
+					España y la diáspora hispanohablante en América del Norte.
+				</p>
+				<p>
+					El libro ganador es publicado por Cristálida Ediciones con distribución en Canadá y en línea.
+				</p>
+			</section>
+
+			<section>
+				<h2>Bases de la convocatoria</h2>
+				<p class="placeholder">Las bases de la próxima edición se publicarán próximamente.</p>
+			</section>
+
+			<section>
+				<h2>Ediciones anteriores</h2>
+				<p class="placeholder">Los ganadores de ediciones anteriores se agregarán aquí.</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		margin-bottom: 3rem;
+		border-bottom: 1px solid rgba(61, 43, 107, 0.12);
+		padding-bottom: 2rem;
+	}
+	.lead { font-size: 1.2rem; color: var(--color-muted); margin: 0; }
+	.prose section { margin-bottom: 3rem; }
+	.placeholder { color: var(--color-muted); font-style: italic; }
+</style>
