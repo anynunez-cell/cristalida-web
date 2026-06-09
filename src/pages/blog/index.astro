@@ -1,114 +1,118 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
+		<BaseHead title="Blog — Cristálida Ediciones" description="Reflexiones sobre poesía, literatura y creación de Cristálida Ediciones." />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+			<div class="page-header">
+				<h1>Blog</h1>
+				<p class="lead">Reflexiones sobre poesía, literatura y el oficio de crear.</p>
+			</div>
+
+			<div class="posts-grid">
+				{posts.map(post => (
+					<article class="post-card">
+						<a href={`/blog/${post.id}/`} class="post-link">
+							<div class="post-meta">
+								<span class="post-author">{post.data.author}</span>
+								<span class="post-sep">·</span>
+								<span class="post-date"><FormattedDate date={post.data.pubDate} /></span>
+							</div>
+							<h2 class="post-title">{post.data.title}</h2>
+							{post.data.description && (
+								<p class="post-desc">{post.data.description}</p>
+							)}
+							<span class="post-read">Leer artículo →</span>
+						</a>
+					</article>
+				))}
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.page-header {
+		margin-bottom: 3rem;
+		border-bottom: 1px solid rgba(61,43,107,0.12);
+		padding-bottom: 2rem;
+	}
+	.lead { font-size: 1.15rem; color: var(--color-muted); margin: 0; }
+
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.post-card {
+		background: white;
+		border-radius: 8px;
+		box-shadow: var(--box-shadow);
+		transition: transform 0.2s, box-shadow 0.2s;
+		border-top: 3px solid var(--color-accent);
+	}
+	.post-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 8px 24px rgba(61,43,107,0.15);
+	}
+	.post-link {
+		display: block;
+		padding: 1.75rem;
+		color: inherit;
+	}
+	.post-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-bottom: 0.75rem;
+	}
+	.post-author {
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--color-secondary);
+	}
+	.post-sep { color: var(--color-muted); font-size: 0.85rem; }
+	.post-date { font-size: 0.85rem; color: var(--color-muted); }
+	.post-title {
+		font-size: 1.4rem;
+		color: var(--color-primary);
+		margin: 0 0 0.75rem;
+		line-height: 1.3;
+	}
+	.post-title:hover { color: var(--color-accent); }
+	.post-desc {
+		font-size: 0.95rem;
+		color: var(--color-text);
+		margin: 0 0 1rem;
+		line-height: 1.6;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.post-read {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--color-secondary);
+	}
+
+	@media (max-width: 600px) {
+		.posts-grid { grid-template-columns: 1fr; }
+	}
+</style>

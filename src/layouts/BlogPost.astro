@@ -8,79 +8,109 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, author } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
+		<BaseHead title={`${title} — Cristálida Ediciones`} description={description} />
 	</head>
-
 	<body>
 		<Header />
 		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
+			<article class="article-wrap">
+				{heroImage && (
+					<div class="hero-image">
+						<Image width={1020} height={510} src={heroImage} alt={title} />
 					</div>
+				)}
+				<header class="article-header">
+					<div class="article-meta">
+						{author && <span class="article-author">{author}</span>}
+						{author && <span class="meta-sep">·</span>}
+						<span class="article-date"><FormattedDate date={pubDate} /></span>
+						{updatedDate && (
+							<span class="meta-sep">·</span>
+							<span class="article-updated">Actualizado: <FormattedDate date={updatedDate} /></span>
+						)}
+					</div>
+					<h1 class="article-title">{title}</h1>
+					<hr class="article-divider" />
+				</header>
+				<div class="prose">
 					<slot />
 				</div>
+				<footer class="article-footer">
+					<a href="/blog" class="back-link">← Volver al blog</a>
+				</footer>
 			</article>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.article-wrap {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 0 1rem 3rem;
+	}
+	.hero-image {
+		margin-bottom: 2rem;
+	}
+	.hero-image img {
+		width: 100%;
+		border-radius: 8px;
+		box-shadow: var(--box-shadow);
+	}
+	.article-header {
+		text-align: center;
+		padding: 2rem 0 1.5rem;
+	}
+	.article-meta {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+	}
+	.article-author {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--color-secondary);
+		font-family: var(--font-body);
+	}
+	.meta-sep { color: var(--color-muted); font-size: 0.9rem; }
+	.article-date { font-size: 0.9rem; color: var(--color-muted); }
+	.article-updated { font-size: 0.85rem; color: var(--color-muted); font-style: italic; }
+	.article-title {
+		font-size: clamp(1.8rem, 4vw, 2.5rem);
+		color: var(--color-primary);
+		margin: 0;
+		line-height: 1.2;
+	}
+	.article-divider {
+		border: none;
+		border-top: 2px solid var(--color-accent);
+		width: 60px;
+		margin: 1.5rem auto 0;
+	}
+	.prose {
+		font-size: 1.05rem;
+		line-height: 1.8;
+		color: var(--color-text);
+	}
+	.prose p { margin-bottom: 1.5rem; }
+	.article-footer {
+		margin-top: 3rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid rgba(61,43,107,0.12);
+	}
+	.back-link {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--color-secondary);
+	}
+	.back-link:hover { color: var(--color-accent); }
+</style>
