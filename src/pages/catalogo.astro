@@ -148,6 +148,19 @@ const generos = ["Todos", "Roberto Manzano", "Poesía", "Narrativa", "Álbum ilu
 				))}
 			</div>
 
+			<!-- Banner descarga catálogo infantil -->
+			<div class="banner-infantil" id="banner-infantil" style="display:none">
+				<div class="banner-infantil-inner">
+					<div>
+						<p class="banner-titulo">📚 Catálogo de Literatura Infantil y Juvenil · 2026</p>
+						<p class="banner-desc">Una colección para lectores que sueñan. Álbumes ilustrados y narrativa juvenil.</p>
+					</div>
+					<a href="/catalogo-literatura-infantil-cristalida-ediciones-2026.pdf" download class="btn-descarga">
+						Descargar catálogo PDF
+					</a>
+				</div>
+			</div>
+
 			<!-- Grid de libros -->
 			<div class="books-grid" id="books-grid">
 				{libros.map(libro => (
@@ -193,6 +206,8 @@ const generos = ["Todos", "Roberto Manzano", "Poesía", "Narrativa", "Álbum ilu
 	const btns = document.querySelectorAll<HTMLButtonElement>('.filtro-btn');
 	const cards = document.querySelectorAll<HTMLElement>('.book-card');
 
+	const banner = document.getElementById('banner-infantil');
+
 	btns.forEach(btn => {
 		btn.addEventListener('click', () => {
 			btns.forEach(b => b.classList.remove('active'));
@@ -202,6 +217,7 @@ const generos = ["Todos", "Roberto Manzano", "Poesía", "Narrativa", "Álbum ilu
 				const show = genre === 'Todos' || card.dataset.genre === genre;
 				card.style.display = show ? '' : 'none';
 			});
+			if (banner) banner.style.display = genre === 'Infantil' ? 'block' : 'none';
 		});
 	});
 </script>
@@ -227,6 +243,44 @@ const generos = ["Todos", "Roberto Manzano", "Poesía", "Narrativa", "Álbum ilu
 		border-color: var(--color-primary);
 		color: white;
 	}
+
+	.banner-infantil {
+		margin-bottom: 2rem;
+	}
+	.banner-infantil-inner {
+		background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+		border-radius: 8px;
+		padding: 1.5rem 2rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+	}
+	.banner-titulo {
+		color: white;
+		font-family: var(--font-heading);
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin: 0 0 0.25rem;
+	}
+	.banner-desc {
+		color: rgba(255,255,255,0.8);
+		font-size: 0.9rem;
+		margin: 0;
+	}
+	.btn-descarga {
+		background: var(--color-accent);
+		color: var(--color-primary);
+		padding: 0.65rem 1.5rem;
+		border-radius: 4px;
+		font-weight: 700;
+		font-size: 0.9rem;
+		white-space: nowrap;
+		transition: background 0.2s;
+		display: inline-block;
+	}
+	.btn-descarga:hover { background: #e0bc5a; color: var(--color-primary); }
 
 	.books-grid {
 		display: grid;
