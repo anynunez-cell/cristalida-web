@@ -1,0 +1,290 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const A = "https://www.amazon.ca/dp/";
+
+const libros = [
+	{ n: 1, title: "Canto a la sabana", year: "1973 · Ed. Cristálida 2022/2023", desc: "Poema extenso fundacional, vértice de la «poesía de la tierra» en la lírica cubana de los años setenta. Verso telúrico, memoria del campo y la sabana avileña.", frag: "Este es el saldo para gustar lo florecido. / Mi ojo / es un vidrio negro de presencias.", asin: "2925321038" },
+	{ n: 2, title: "Puerta al camino", year: "1992 · Ed. Cristálida 2022", desc: "Primer libro público del autor. Conjunto lírico de la tierra, con voz íntima y musicalidad transparente. Forma con Canto a la sabana el díptico fundacional de su «Poesía de la tierra».", frag: "Con tu terrosa curva de tinaja / arde mi sangre y trabaja.", asin: "B09XRS5KX4" },
+	{ n: 3, title: "Tablillas de barro I", year: "1993 · Ed. Cristálida 2024", desc: "Primer volumen del políptico mayor del autor. Series de poemas concebidos como tablillas mesopotámicas: la voz lírica se acerca a la inscripción, al barro como memoria.", frag: "Jauja! Cómo allar al hombre fuera de la fruta, / cómo asentarle los talones sin legumbres.", asin: "2925321798" },
+	{ n: 4, title: "El racimo y la estrella", year: "1993 · Ed. Cristálida 2023", desc: "Primer cuaderno decimístico del autor. La décima abierta como espacio de pensamiento, en el cruce de la tradición campesina cubana y la disciplina culta.", frag: "Es tu labio como un orbe / de promesa y sacudida: / una patria humedecida / entre tus labios se absorbe.", asin: "2925321771" },
+	{ n: 5, title: "Tablillas de barro II", year: "1996 · Ed. Cristálida 2024", desc: "Segundo políptico de la serie. La voz lírica se ensancha hacia la prosa rítmica y la meditación filosófica. Premio Adelaida del Mármol 1996.", frag: "La vida es la unidad de un flujo, el flujo de una unidad: / sus vértices y aspas poseen un dinamismo implacable.", asin: "292532181X" },
+	{ n: 6, title: "El hombre cotidiano", year: "1996 · Ed. Cristálida 2022", desc: "Estampas líricas de la jornada, mesa, mano y oficio. Un libro de mirada baja sobre los enseres y las horas, escrito desde una conciencia de justicia.", frag: "Sobre la breve mesa de escribir / ―como una procesión― el mundo pasa.", asin: "B09TDSFXY9" },
+	{ n: 7, title: "Pasando por un trillo", year: "1997 · Ed. Cristálida 2022", desc: "Único libro del autor dirigido a la infancia. Voz limpia, lúdica, raíz campesina. Premio La Rosa Blanca de Literatura Infantil 2005.", frag: "La ética y la estética están fundidas.", asin: "2925446280" },
+	{ n: 8, title: "La hilacha y otras transfiguraciones", year: "1997–2009 · Ed. Cristálida 2022", desc: "Reúne cuatro conjuntos atravesados por una atmósfera tonal común: el dolor como tránsito hacia un canto más alto. Premio Milanés 1997.", frag: "Mecánica del día, de cómo el día se mueve y nutre, / de cómo se va de un día a otro.", asin: "B09TMYWDJ2" },
+	{ n: 9, title: "Synergos", year: "2005 · Ed. Cristálida 2023", desc: "Libro nodo del autor: ahí se reúnen su voluntad sinérgica y su madurez expresiva. Versos largos, prosa rítmica, oleaje de pensamiento. Premio Internacional Nicolás Guillén 2005.", frag: "Mis brazos se alargan como ramas delirantes, / tienen vocación de pulpos celestes.", asin: "2925321739" },
+	{ n: 10, title: "Rapsodia de vivir", year: "2006 · Ed. Cristálida 2022", desc: "Suite de poemas extensos, viaje espiritual por la espuma, el viento, las horas. La voz se vuelve cada vez más sinfónica y meditativa.", frag: "Partimos con el alba hacia la más lejana / espuma, lentos por canales verdes.", asin: "B09WLYKM3H" },
+	{ n: 11, title: "Ergonomía artística", year: "2007 · Ed. Cristálida 2023", desc: "Cuaderno de ensayos sobre la creación. Manzano introduce categorías propias para pensar el trabajo del artista con la lengua.", frag: "El primer gesto de todo análisis es visualizar la síntesis. / La maestría debe pasar la prueba sin sudor.", asin: "2925321712" },
+	{ n: 12, title: "Pensamientos libres", year: "2006 · Ed. Cristálida 2022", desc: "Conjunto de prosas breves y fulgurantes. Mezcla de aforismo, parábola y meditación. Sentencias que parecen tallar el pensamiento sobre el barro.", frag: "Mis hijos crecieron de mis manos. / De mi sangre diaria germinaron sus ojos.", asin: "B09PKDLK2T" },
+	{ n: 13, title: "La piedra de Sísifo", year: "1983/2013 · Ed. Cristálida 2023", desc: "Poema mural, cuaderno único concebido como un solo trazado. Edición conmemorativa de los treinta años de su escritura.", frag: "Aquí los hombros, que aún es de noche. / En todos los cuadrantes, aún es de noche.", asin: "2925321054" },
+	{ n: 14, title: "Eurekíada", year: "Inédito · Ed. Cristálida 2024", desc: "Poema mural, marcha ascendente del pensamiento. Diálogo permanente con la idea de hallazgo. Forma trilogía con La flecha y el infinito y La piedra de Sísifo.", frag: "Siempre estamos delante de la Puerta: / hay detrás de nosotros una sombra / y allá lejos se ve la Luz abierta!", asin: "2925446078" },
+	{ n: 15, title: "La flecha y el infinito", year: "Ed. Cristálida 2024", desc: "Poema mural sobre el seguir, la patria interior. Cierra la trilogía con Eurekíada y La piedra de Sísifo.", frag: "Toda poesía algo tiene de póstumo: / es como un recado de un muerto.", asin: "2925446140" },
+	{ n: 16, title: "El libro de los discursos", year: "2017 · Ed. Cristálida 2023", desc: "Obra mayor: el poeta cede su voz a seres míticos e históricos —Hermes, Pangu, Maxwell, Martí, el Jefe Seattle, la Madre Tierra. Cada discurso es una sinfonía moral.", frag: "Quién puede decir en palabras, sujetas a sucesión, / la simultaneidad de espacios.", asin: "2925321755" },
+	{ n: 17, title: "Tablillas de barro III", year: "Ed. Cristálida 2024", desc: "Tercer volumen del políptico mayor, cerrado tres décadas después de los dos primeros. Décima, octosílabo, prosa rítmica: una sinfonía de formas reunida bajo el barro como matriz.", frag: "Solo de la noche honda / sube el alborear profundo.", asin: "2925446442" },
+	{ n: 18, title: "Las coplas del juntador", year: "2024 · Ed. Cristálida 2024", desc: "Cuaderno de coplas modernas que dialoga con la tradición oral. El «juntador» es a la vez personaje, oficio y poética.", frag: "Ya vienen todas las puntas, / como atraídas de imán.", asin: "2925321453" },
+	{ n: 19, title: "El discurso de la Madre Tierra", year: "2017/2024 · Ed. Cristálida 2024", desc: "Fragmento de El libro de los discursos publicado como volumen autónomo. La voz mayor del planeta hablando a sus hijos.", frag: "Mira aquí, en esta mano arrugada, los clavos de plata.", asin: "2925446345" },
+	{ n: 20, title: "La campana en el abismo", year: "2022 · Ed. Cristálida 2022", desc: "Tres poemas extensos escritos bajo precariedad y angustia. Un libro de altísima fidelidad al lenguaje poético, contrario al «periodismo lírico».", frag: "Lo terrible no es la altura, / sino la pendiente.", asin: "B09SXGPC7V" },
+	{ n: 21, title: "Los estribos profundos", year: "Ed. Cristálida 2024", desc: "Pieza extraída de La campana en el abismo, publicada como cuaderno autónomo. La voz del enterrado, la memoria de los que iban «derramados por la tierra».", frag: "Aún tengo cargada la voz. / Íbamos así, derramados por la tierra, / como una buena noticia.", asin: "2925446620" },
+	{ n: 22, title: "Defensa de la poesía", year: "2019–2022 · Ed. Cristálida 2022", desc: "Conjunto de ensayos y aforismos sobre poesía. Manifiesto sereno y luminoso del poeta-maestro.", frag: "La poesía es la medida emocional de la inteligencia. / La poesía es una temperatura salvífica.", asin: "B09YVJRJTS" },
+	{ n: 23, title: "El discurso de José Martí", year: "2017/2026 · Ed. Cristálida 2026", desc: "El poema más reciente publicado por Cristálida. Manzano cede la voz a José Martí. Edición autónoma con ilustraciones del autor.", frag: "Al universo lo colorea y borda la analogía: / como todo se relaciona, todo se corresponde.", asin: "2925446604" },
+];
+
+const premios = [
+	"Premio Nicolás Guillén (internacional)",
+	"Premio Silvestre de Balboa",
+	"Premio Adelaida del Mármol",
+	"Premio Samuel Feijóo",
+	"Premio La Rosa Blanca de Literatura Infantil",
+	"Premio Espejo de Paciencia",
+	"Premio Milanés",
+];
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead
+			title="Roberto Manzano — Cristálida Ediciones"
+			description="Obra reunida de Roberto Manzano en Cristálida Ediciones. Veintitrés libros. La permanencia de la palabra."
+		/>
+	</head>
+	<body>
+		<Header />
+
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<p class="eyebrow">Catálogo monográfico · Cristálida Ediciones</p>
+				<h1>Roberto Manzano</h1>
+				<p class="subtitulo">La permanencia de la palabra</p>
+				<p class="hero-desc">Veintitrés libros · 2022 — 2026</p>
+			</div>
+		</section>
+
+		<main>
+
+			<!-- PÓRTICO -->
+			<section class="card-section">
+				<div class="portico-grid">
+					<div class="portico-foto">
+						<img src="/images/portadas-web/ensayo-manzano-foto1.jpg" alt="Roberto Manzano" onerror="this.style.display='none'" />
+						<div class="foto-placeholder-rm">RM</div>
+					</div>
+					<div class="portico-texto">
+						<span class="eyebrow-section">Una obra para la memoria cubana</span>
+						<p>
+							Roberto Manzano (Ciego de Ávila, 1949) ocupa un lugar singular en la poesía cubana contemporánea. Su obra no se ha construido al ritmo del mercado ni a la sombra de las modas: pertenece a esa estirpe rara, casi extinguida, que entiende la escritura como un servicio a la lengua y a la comunidad.
+						</p>
+						<p>
+							Poeta, ensayista, editor y maestro, ha enseñado dentro y fuera de la Isla, contribuyendo decisivamente a la formación de varias generaciones de escritores. Su obra atraviesa cinco grandes territorios: la poesía de la tierra, el pensamiento histórico, la décima y la prosa rítmica, la reflexión ergonómica sobre la creación y el diálogo con la infancia.
+						</p>
+						<blockquote>
+							«La poesía tiene que tener el geotropismo positivo y negativo del árbol: te hace crecer al fondo de la tierra y te hala hacia el cielo.»
+						</blockquote>
+						<div class="premios">
+							<h3>Premios y reconocimientos</h3>
+							<ul>
+								{premios.map(p => <li>{p}</li>)}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- LÍNEA DEL TIEMPO -->
+			<section class="card-section">
+				<h2>Trayectoria literaria</h2>
+				<div class="timeline">
+					<div class="tl-item"><span class="tl-year">1949</span><span class="tl-text">Nace en Ciego de Ávila, en el centro rural de Cuba.</span></div>
+					<div class="tl-item"><span class="tl-year">1961</span><span class="tl-text">A los doce años parte como becado a la Sierra Maestra, donde inicia los estudios de magisterio.</span></div>
+					<div class="tl-item"><span class="tl-year">1973</span><span class="tl-text">Escribe el extenso poema «Canto a la sabana», pieza fundacional de su «poesía de la tierra».</span></div>
+					<div class="tl-item"><span class="tl-year">1992</span><span class="tl-text">Aparece su primer libro reunido, «Puerta al camino», por Ediciones Ácana.</span></div>
+					<div class="tl-item"><span class="tl-year">1993</span><span class="tl-text">En plena crisis económica cubana escribe «Tablillas de barro I», «El racimo y la estrella» y otros volúmenes.</span></div>
+					<div class="tl-item"><span class="tl-year">2005</span><span class="tl-text">Premio La Rosa Blanca de Literatura Infantil por «Pasando por un trillo». Sale «Synergos», libro nodo de su madurez. Premio Internacional Nicolás Guillén.</span></div>
+					<div class="tl-item"><span class="tl-year">2017</span><span class="tl-text">«El libro de los discursos»: el poeta cede la voz a Martí, a la Madre Tierra, a Maxwell, al Jefe Seattle.</span></div>
+					<div class="tl-item"><span class="tl-year">2022</span><span class="tl-text">Comienza la edición reunida de su obra en Cristálida Ediciones, dirigida por Ana Núñez González.</span></div>
+					<div class="tl-item"><span class="tl-year">2023</span><span class="tl-text">Edición conmemorativa de los cincuenta años de «Canto a la sabana» y los treinta de «La piedra de Sísifo».</span></div>
+					<div class="tl-item"><span class="tl-year">2026</span><span class="tl-text">Cristálida publica «El discurso de José Martí» y el catálogo monográfico «La permanencia de la palabra».</span></div>
+				</div>
+			</section>
+
+			<!-- CATÁLOGO RAZONADO -->
+			<section>
+				<h2 class="catalogo-titulo">Los veintitrés libros</h2>
+				<p class="catalogo-intro">Catálogo razonado de la obra reunida en Cristálida Ediciones, ordenado según la cronología de escritura o primera edición.</p>
+
+				<div class="libros-grid">
+					{libros.map(libro => (
+						<article class="libro-card">
+							<div class="libro-numero">Libro {libro.n} de 23</div>
+							<h3 class="libro-titulo">{libro.title}</h3>
+							<p class="libro-year">{libro.year}</p>
+							<p class="libro-desc">{libro.desc}</p>
+							<blockquote class="libro-frag">«{libro.frag}»</blockquote>
+							<a href={A + libro.asin} target="_blank" rel="noopener" class="btn-amazon">
+								Comprar en Amazon →
+							</a>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<!-- LEGADO -->
+			<section class="card-section legado">
+				<h2>Legado · La permanencia de la palabra</h2>
+				<p>
+					La obra de Roberto Manzano puede leerse como una larga conversación con la tradición. Hay en ella un eco de Heredia y de Martí, una hermandad con Samuel Feijóo y con Eliseo Diego. Pero ese diálogo no es nostálgico: es activo, encaminista. Manzano no copia la tradición; la continúa en la forma en que se continúa un río: aceptando la cuenca y abriendo nuevos cauces.
+				</p>
+				<p>
+					Su lugar en la poesía cubana contemporánea es el del maestro que no impone, que no proselitiza, que enseña por contagio. Varias generaciones de poetas avileños y cubanos —y, después, latinoamericanos— lo reconocen como una cátedra silenciosa.
+				</p>
+				<blockquote class="legado-cita">
+					«Aprendimos con él que la poesía no se enseña como receta. Se enseña sentando al joven escritor frente a un poema, y leyéndolo despacio, hasta que las palabras se vuelven una mano y un pan compartidos. Eso es Roberto: el maestro que cede la voz para que aparezca la nuestra.»
+					<cite>— Voz colectiva de sus discípulos</cite>
+				</blockquote>
+				<blockquote class="legado-cita">
+					«La poesía es una temperatura salvífica.»
+					<cite>— Roberto Manzano</cite>
+				</blockquote>
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* HERO */
+	.hero {
+		background: linear-gradient(135deg, #1a0a3d 0%, var(--color-primary) 100%);
+		padding: 5rem 2rem;
+		text-align: center;
+		color: var(--color-bg);
+	}
+	.hero-inner { max-width: 680px; margin: 0 auto; }
+	.eyebrow {
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		font-size: 0.8rem;
+		color: var(--color-accent);
+		margin: 0 0 1rem;
+	}
+	.hero h1 {
+		font-size: clamp(3rem, 7vw, 5rem);
+		color: var(--color-bg);
+		margin: 0 0 0.5rem;
+		line-height: 1;
+	}
+	.subtitulo {
+		font-family: var(--font-heading);
+		font-style: italic;
+		font-size: 1.5rem;
+		color: var(--color-accent);
+		margin: 0 0 0.75rem;
+	}
+	.hero-desc { color: rgba(250,248,255,0.7); margin: 0; font-size: 0.95rem; letter-spacing: 0.1em; }
+
+	/* SECTIONS */
+	.card-section {
+		background: white;
+		border-radius: 8px;
+		padding: 2.5rem;
+		box-shadow: var(--box-shadow);
+		margin-bottom: 3rem;
+	}
+	.card-section h2 { margin-bottom: 1.5rem; }
+
+	/* PÓRTICO */
+	.portico-grid { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
+	.portico-foto img { width: 220px; border-radius: 4px; display: block; }
+	.foto-placeholder-rm {
+		width: 220px; height: 280px;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+		border-radius: 4px;
+		display: flex; align-items: center; justify-content: center;
+		font-family: var(--font-heading); font-size: 4rem; color: rgba(255,255,255,0.3); font-weight: 700;
+	}
+	.eyebrow-section {
+		text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem;
+		color: var(--color-accent); font-weight: 700; display: block; margin-bottom: 1rem;
+	}
+	.portico-texto p { line-height: 1.75; margin-bottom: 1rem; }
+	.portico-texto blockquote {
+		border-left: 3px solid var(--color-accent);
+		padding: 0.5rem 1.5rem;
+		font-family: var(--font-heading);
+		font-style: italic;
+		font-size: 1.2rem;
+		color: var(--color-secondary);
+		margin: 1.5rem 0;
+	}
+	.premios h3 { font-size: 1rem; margin: 1.5rem 0 0.75rem; }
+	.premios ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+	.premios li {
+		background: rgba(61,43,107,0.08);
+		border-radius: 20px;
+		padding: 0.3rem 0.9rem;
+		font-size: 0.85rem;
+		color: var(--color-primary);
+	}
+
+	/* TIMELINE */
+	.timeline { display: flex; flex-direction: column; gap: 0; }
+	.tl-item {
+		display: grid; grid-template-columns: 80px 1fr;
+		gap: 1rem; align-items: start;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid rgba(61,43,107,0.08);
+	}
+	.tl-year { font-family: var(--font-heading); font-weight: 700; color: var(--color-accent); font-size: 1rem; padding-top: 2px; }
+	.tl-text { font-size: 0.95rem; color: var(--color-text); }
+
+	/* CATÁLOGO */
+	.catalogo-titulo { margin-bottom: 0.5rem; }
+	.catalogo-intro { color: var(--color-muted); margin-bottom: 2.5rem; }
+	.libros-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+	.libro-card {
+		background: white;
+		border-radius: 8px;
+		padding: 1.75rem;
+		box-shadow: var(--box-shadow);
+		border-top: 3px solid var(--color-accent);
+		display: flex; flex-direction: column; gap: 0.5rem;
+	}
+	.libro-numero { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); }
+	.libro-titulo { font-size: 1.2rem; margin: 0; color: var(--color-primary); }
+	.libro-year { font-size: 0.8rem; color: var(--color-accent); font-weight: 600; margin: 0; }
+	.libro-desc { font-size: 0.9rem; color: var(--color-text); margin: 0; line-height: 1.6; flex: 1; }
+	.libro-frag {
+		border-left: 2px solid rgba(201,168,76,0.4);
+		padding: 0.25rem 0.75rem;
+		font-family: var(--font-heading);
+		font-style: italic;
+		font-size: 0.95rem;
+		color: var(--color-secondary);
+		margin: 0.5rem 0;
+	}
+	.btn-amazon { font-size: 0.8rem; font-weight: 600; color: var(--color-secondary); margin-top: auto; }
+	.btn-amazon:hover { color: var(--color-accent); }
+
+	/* LEGADO */
+	.legado p { line-height: 1.8; margin-bottom: 1rem; }
+	.legado-cita {
+		border-left: 3px solid var(--color-accent);
+		padding: 1rem 1.5rem;
+		font-family: var(--font-heading);
+		font-style: italic;
+		font-size: 1.2rem;
+		color: var(--color-secondary);
+		margin: 1.5rem 0;
+	}
+	.legado-cita cite { display: block; font-size: 0.85rem; font-style: normal; color: var(--color-muted); margin-top: 0.5rem; }
+
+	@media (max-width: 680px) {
+		.portico-grid { grid-template-columns: 1fr; }
+		.foto-placeholder-rm, .portico-foto img { width: 150px; height: 190px; }
+		.libros-grid { grid-template-columns: 1fr; }
+	}
+</style>
