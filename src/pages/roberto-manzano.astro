@@ -124,14 +124,16 @@ const premios = [
 									<img src={libro.cover} alt={`Portada de ${libro.title}`} class={`libro-portada${libro.square ? ' square' : ''}`} loading="lazy" />
 								</a>
 							)}
-							<div class="libro-numero">Libro {libro.n} de 23</div>
-							<h3 class="libro-titulo">{libro.title}</h3>
-							<p class="libro-year">{libro.year}</p>
-							<p class="libro-desc">{libro.desc}</p>
-							<blockquote class="libro-frag">«{libro.frag}»</blockquote>
-							<a href={A + libro.asin} target="_blank" rel="noopener" class="btn-amazon">
-								Comprar en Amazon →
-							</a>
+							<div class="libro-body">
+								<div class="libro-numero">Libro {libro.n} de 23</div>
+								<h3 class="libro-titulo">{libro.title}</h3>
+								<p class="libro-year">{libro.year}</p>
+								<p class="libro-desc">{libro.desc}</p>
+								<blockquote class="libro-frag">«{libro.frag}»</blockquote>
+								<a href={A + libro.asin} target="_blank" rel="noopener" class="btn-amazon">
+									Comprar en Amazon →
+								</a>
+							</div>
 						</article>
 					))}
 				</div>
@@ -254,20 +256,23 @@ const premios = [
 	.libro-card {
 		background: white;
 		border-radius: 8px;
-		padding: 1.75rem;
+		overflow: hidden;
 		box-shadow: var(--box-shadow);
 		border-top: 3px solid var(--color-accent);
-		display: flex; flex-direction: column; gap: 0.5rem;
+		display: flex; flex-direction: column;
 	}
 	.libro-portada {
 		object-fit: cover;
-		border-radius: 4px 4px 0 0;
-		margin: -1.75rem -1.75rem 1rem -1.75rem;
-		width: calc(100% + 3.5rem);
+		width: 100%;
 		display: block;
 		aspect-ratio: 2/3;
 	}
 	.libro-portada.square { aspect-ratio: 1/1; }
+	.libro-body {
+		padding: 1.75rem;
+		display: flex; flex-direction: column; gap: 0.5rem;
+		flex: 1;
+	}
 	.libro-numero { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); }
 	.libro-titulo { font-size: 1.2rem; margin: 0; color: var(--color-primary); }
 	.libro-year { font-size: 0.8rem; color: var(--color-accent); font-weight: 600; margin: 0; }
