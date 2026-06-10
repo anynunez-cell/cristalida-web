@@ -15,18 +15,20 @@ const librosRecientes = [
 	{
 		title: "El discurso de José Martí",
 		author: "Roberto Manzano",
-		year: 2025,
+		year: 2026,
 		genre: "Poesía",
 		amazonUrl: "https://www.amazon.ca/dp/2925446604",
-		cover: null,
+		cover: "/images/portadas-web/EL DISCURSO DE JOSÉ MARTÍ-Roberto Manzano-cubierta.jpg",
+		square: true,
 	},
 	{
 		title: "Cuentos para Bárbara",
 		author: "Reyna Esperanza Cruz",
 		year: 2025,
-		genre: "Narrativa",
+		genre: "Infantil",
 		amazonUrl: "https://www.amazon.ca/dp/2925446329",
-		cover: null,
+		cover: "/images/portadas-web/CUENTOS PARA BÁRBARA-Reyna Esperanza Cruz-cubierta.jpg",
+		square: true,
 	},
 	{
 		title: "Luciérnagas en el puente",
@@ -34,7 +36,8 @@ const librosRecientes = [
 		year: 2025,
 		genre: "Poesía",
 		amazonUrl: "https://www.amazon.ca/dp/B0G5N9JXQ8",
-		cover: null,
+		cover: "/images/portadas-web/LUCIÉRNAGAS EN EL PUENTE-Martha Rosa Fernández-cubierta.jpg",
+		square: false,
 	},
 ];
 ---
@@ -107,10 +110,10 @@ const librosRecientes = [
 				</div>
 				<div class="books-grid">
 					{librosRecientes.map(libro => (
-						<article class="book-card">
+						<article class="book-card" data-square={libro.square ? "true" : "false"}>
 							<a href={libro.amazonUrl} target="_blank" rel="noopener" class="book-cover-link">
 								{libro.cover
-									? <img src={libro.cover} alt={`Portada de ${libro.title}`} class="book-cover" />
+									? <img src={libro.cover} alt={`Portada de ${libro.title}`} class="book-cover" loading="lazy" />
 									: <div class="book-cover-placeholder"><span>{libro.title[0]}</span></div>
 								}
 							</a>
@@ -254,6 +257,8 @@ const librosRecientes = [
 .book-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(61,43,107,0.18); }
 .book-cover-link { display: block; }
 .book-cover { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
+[data-square="true"] .book-cover { aspect-ratio: 1/1; }
+[data-square="true"] .book-cover-placeholder { aspect-ratio: 1/1; }
 .book-cover-placeholder {
 	width: 100%; aspect-ratio: 2/3;
 	background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
