@@ -50,6 +50,29 @@ const premios = [
 			title="Roberto Manzano — Cristálida Ediciones"
 			description="Obra reunida de Roberto Manzano en Cristálida Ediciones. Veintitrés libros. La permanencia de la palabra."
 		/>
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "Obra reunida de Roberto Manzano en Cristálida Ediciones",
+			"itemListElement": libros.map((l, i) => ({
+				"@type": "ListItem",
+				"position": i + 1,
+				"item": {
+					"@type": "Book",
+					"name": l.title,
+					"author": {
+						"@type": "Person",
+						"name": "Roberto Manzano"
+					},
+					"publisher": {
+						"@type": "Organization",
+						"name": "Cristálida Ediciones"
+					},
+					"inLanguage": "es",
+					"url": `https://www.amazon.ca/dp/${l.asin}`
+				}
+			}))
+		})} />
 	</head>
 	<body>
 		<Header />

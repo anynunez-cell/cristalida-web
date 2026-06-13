@@ -133,6 +133,32 @@ const generos = ["Todos", "Roberto Manzano", "Poesía", "Narrativa", "Álbum ilu
 <html lang="es">
 	<head>
 		<BaseHead title="Catálogo — Cristálida Ediciones" description="Todos los libros publicados por Cristálida Ediciones. Poesía, narrativa, ensayo e infantil." />
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "Catálogo de Cristálida Ediciones",
+			"itemListElement": libros
+				.filter(l => l.amazonUrl && l.amazonUrl !== "https://www.amazon.ca/dp/")
+				.map((l, i) => ({
+					"@type": "ListItem",
+					"position": i + 1,
+					"item": {
+						"@type": "Book",
+						"name": l.title,
+						"author": {
+							"@type": "Person",
+							"name": l.author
+						},
+						"publisher": {
+							"@type": "Organization",
+							"name": "Cristálida Ediciones"
+						},
+						"inLanguage": "es",
+						"url": l.amazonUrl,
+						"genre": l.genre
+					}
+				}))
+		})} />
 	</head>
 	<body>
 		<Header />
