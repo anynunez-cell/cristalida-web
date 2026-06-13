@@ -46,6 +46,28 @@ const librosRecientes = [
 <html lang="es">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Cristálida Ediciones",
+			"url": "https://cristalidaediciones.com",
+			"logo": "https://cristalidaediciones.com/images/logo/logo-cristalida.png",
+			"description": "Editorial independiente de poesía y literatura en español, con sede en Quebec, Canadá. Fundada en 2021.",
+			"foundingDate": "2021",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Amos",
+				"addressRegion": "Québec",
+				"addressCountry": "CA"
+			},
+			"email": "contacto@cristalidaediciones.com",
+			"sameAs": [
+				"https://unlugarllamadocristalida.substack.com",
+				"https://www.amazon.ca/s?k=crist%C3%A1lida+ediciones"
+			],
+			"publishingPrinciples": "https://cristalidaediciones.com/sobre",
+			"knowsAbout": ["Poesía", "Literatura cubana", "Literatura en español", "Formación poética"]
+		})} />
 	</head>
 	<body>
 		<Header />

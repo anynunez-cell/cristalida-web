@@ -14,6 +14,30 @@ const { title, description, pubDate, updatedDate, heroImage, author } = Astro.pr
 <html lang="es">
 	<head>
 		<BaseHead title={`${title} — Cristálida Ediciones`} description={description} />
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			"headline": title,
+			"description": description,
+			"author": {
+				"@type": "Person",
+				"name": author || "Cristálida Ediciones"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Cristálida Ediciones",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://cristalidaediciones.com/images/logo/logo-cristalida.png"
+				}
+			},
+			"datePublished": pubDate?.toISOString(),
+			"dateModified": updatedDate?.toISOString() || pubDate?.toISOString(),
+			"inLanguage": "es",
+			"url": Astro.url.href,
+			"mainEntityOfPage": Astro.url.href,
+			"image": "https://cristalidaediciones.com/og-image.jpg"
+		})} />
 	</head>
 	<body>
 		<Header />
