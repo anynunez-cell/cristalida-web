@@ -516,7 +516,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "2925321453",
 		cover: P + "las-coplas-del-juntador-roberto-manzano-cubierta.webp",
-		desc: "Cuaderno de coplas modernas que dialoga con la tradición oral. El «juntador» es a la vez personaje, oficio y poética.",
+		desc: "Un libro de imágenes acompañadas de versos, de alto simbolismo, que trabaja lo real desde lo sumo trascendente, que ofrecerá numerosas sugerencias al lector.",
 		frag: "Tienen el arte de la poesía y el de la ilustración un punto común: la imagen. / En los dos ámbitos, si no se alcanzan los predios estrictos de la imagen, / se permanece fuera del arte.",
 	},
 	{
@@ -595,7 +595,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Infantil",
 		amazonUrl: A + "2925321208",
 		cover: P + "frascuelo-el-perro-fiero-guillermo-nunez-cubierta.webp",
-		desc: "Literatura infantil de Guillermo Núñez Llana. Frascuelo, el perro fiero que en el fondo no es tan fiero.",
+		desc: "Una hermosa historia, iluminada gráficamente, de las relaciones de un muchacho con un perro fiero, que agradará mucho a los lectores.",
 	},
 	{
 		title: "Canto a la sabana",
@@ -604,7 +604,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "2925321038",
 		cover: P + "canto-a-la-sabana-roberto-manzano-cubierta-digital.webp",
-		desc: "Poema extenso fundacional, vértice de la «poesía de la tierra» en la lírica cubana de los años setenta. Verso telúrico, memoria del campo y la sabana avileña.",
+		desc: "Edición conmemorativa del poema así titulado, con estudios críticos y conjuntos de opiniones sobre sus características y significación. El lector atento al desarrollo de la poesía cubana agradecerá el volumen.",
 		frag: "Reeditar de manera independiente «Canto a la sabana» / treinta y tres años después, / es un acto de gratitud con el poema.",
 	},
 	{
@@ -644,7 +644,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Infantil",
 		amazonUrl: A + "2925321410",
 		cover: P + "juegos-de-tierra-y-mar-reyna-esperanza-cruz-cubierta.webp",
-		desc: "Libro infantil de Reyna Esperanza Cruz. Juegos que inventan los niños con la tierra y el mar como compañeros.",
+		desc: "Un ameno y sonoro conjunto de piezas líricas, escritas para los niños. Su espíritu de juego y formación vincula dos aspectos esenciales para la alegría y desarrollo de la infancia y la adolescencia.",
 		frag: "A mi nieta Reina María, / flor creciendo en la tierra.",
 	},
 	{
@@ -654,7 +654,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321275",
 		cover: P + "reminiscencias-ivelisse-machin-torres-cubierta-del-digital.webp",
-		desc: "Primer poemario de Ivelisse Machín Torres en Cristálida. Remembranzas, pájaros de verano y hojas que no saben cantar.",
+		desc: "A pesar de su juventud, la poeta despliega un gran espectro temático, con una fina capacidad expresiva, que maneja muy bien los recursos de nuestra poesía clásica. Sentimiento y gracia se fusionan con éxito.",
 		frag: "Pájaros perdidos de verano / vienen a mi ventana, cantan y se van volando. / Y hojas amarillas de otoño, que no saben cantar.",
 	},
 	{
@@ -684,7 +684,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321070",
 		cover: P + "sentada-sobre-el-miedo-de-correr-reyna-esperanza-cruz-cubierta-del-digital3.webp",
-		desc: "Poemario de Reyna Esperanza Cruz. Con los ojos entre la cuerda y el abismo: textos tensos y sintéticos.",
+		desc: "Un volumen lleno de belleza y autenticidad, con lenguaje asociativo sintético. La poeta comparte su cosmovisión y nos conduce a través de la vida espiritual. El lector sentirá la verdad y la frescura con que se canta.",
 		frag: "Con los ojos entre la cuerda y el abismo, / escribe desde lejos, y al entrar en la calidez de los textos / —tensos y sintéticos, como desembridados tanteos de un ser.",
 	},
 	{
@@ -694,7 +694,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "292532147X",
 		cover: P + "sermon-de-pajaros-adalgiza-charria-cubierta.webp",
-		desc: "Poesía de la colombiana Adalgiza Charria Quinte. Nunca se sabe de qué recónditos manantiales brota la inspiración poética.",
+		desc: "Un excelente volumen de versos, que agradará mucho al lector, por la calidad de representación en las vivencias y el humanismo que estremece cada una de sus piezas, plenas de verdad y belleza.",
 		frag: "Nunca se sabe a ciencia cierta de qué recónditos manantiales / brota la inspiración poética.",
 	},
 	{
@@ -714,7 +714,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Narrativa",
 		amazonUrl: A + "2925321496",
 		cover: P + "chroniques-du-quotidien-ana-luna-cubierta.webp",
-		desc: "Crónicas del cotidiano de Ana Luna (Ana Núñez González), escritas en francés. La historia de la humanidad, con todos sus éxitos y errores.",
+		desc: "Cuentos breves, llenos de expresión popular, que captan con vigor la vida de sus protagonistas. Agradarán mucho al lector por su ingeniosidad y frescura.",
 		frag: "Je commence par une vérité de La Palice : l'histoire de l'humanité, / avec tous ses succès et ses erreurs, / ne serait pas la même sans les femmes.",
 	},
 	{
@@ -725,7 +725,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		amazonUrl: A + "2925321879",
 		cover: P + "apasanka-camila-reimers-cubierta-en-espanol.webp",
 		slug: "apasanka-camila-reimers-es",
-		desc: "Novela de la artista y escritora chilena Camila Reimers, edición en español. Apasanka: el tejido que guarda la memoria.",
+		desc: "Una apasionante novela que representa el complejo tejido de las vidas en el espacio y en el tiempo, con una gran capacidad de síntesis y plasticidad narrativa.",
 	},
 	{
 		title: "Apasanka",
@@ -735,7 +735,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		amazonUrl: A + "2925321895",
 		cover: P + "apasanka-camila-reimers-cubierta-en-ingles.webp",
 		slug: "apasanka-camila-reimers-en",
-		desc: "Novela de la artista y escritora chilena Camila Reimers, edición en inglés. Apasanka: the weaving that holds memory.",
+		desc: "Una magnífica traducción al inglés de una obra narrativa muy singular, que plasma el mundo contemporáneo desde la sensibilidad de la mujer.",
 	},
 	{
 		title: "Decantaciones",
@@ -773,7 +773,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321585",
 		cover: P + "lluvia-con-bestia-y-caracola-liudys-carmona-calana-cubierta-del-digital.webp",
-		desc: "Poesía de Liudys Carmona Calaña. La poesía como testimonio vital: al describir el mundo interior se entra en zonas desconocidas.",
+		desc: "Libro de poesía que a través del mundo simbólico condensa toda una vida, sus espacios y seres humanos esenciales. Agradará al lector por su autenticidad.",
 		frag: "Al tratar de describir con la mayor fuerza y honradez su mundo interior / los creadores líricos entran en zonas desconocidas.",
 	},
 	{
@@ -783,7 +783,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "2925321054",
 		cover: P + "la-piedra-de-sisifo-roberto-manzano-cubierta.webp",
-		desc: "Poema mural, cuaderno único concebido como un solo trazado. Edición conmemorativa de los treinta años de su escritura.",
+		desc: "Este poema extenso, escrito por el autor en condiciones difíciles, cumple en este 2023 treinta años de creación. Es un texto mural, compuesto por partes autónomas y encadenadas al tema que rige el conjunto.",
 		frag: "Aquí los hombros, que aún es de noche. / En todos los cuadrantes, aún es de noche.",
 	},
 	{
@@ -793,7 +793,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321607",
 		cover: P + "estacion-ajena-aurora-de-celia-cubierta.webp",
-		desc: "Poesía de Aurora de Celia. La poesía es un arte de vivencias representadas verbalmente, bajo un riguroso lenguaje de imágenes.",
+		desc: "A pesar de la juventud de la autora, el presente libro es un volumen de eficacia expresiva. Posee un gran dominio del lenguaje poético, y maneja las vivencias con claridad y profundidad.",
 		frag: "La poesía es un arte de vivencias. Pero de vivencias representadas verbalmente, / bajo un riguroso lenguaje de imágenes.",
 	},
 	{
@@ -803,7 +803,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321291",
 		cover: P + "los-puentes-de-la-noche-maria-iluminada-gonzalez-cubierta.webp",
-		desc: "Poemario de María Iluminada González. Premio Internacional de Poesía Castilla-La Mancha.",
+		desc: "Libro de fuertes atmósferas vivenciales, que trabaja la vivencia con minuciosidad y simbolismo, a través de versículos flexibles. El lector sentirá la vehemencia y la eficacia de su escritura.",
 	},
 	{
 		title: "El libro de las extrañas densidades",
@@ -812,7 +812,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321372",
 		cover: P + "el-libro-de-las-extranas-densidades-lionel-valdivia-aguiar-cubierta.webp",
-		desc: "Poemario de Lionel Valdivia Aguiar. Sinergia del testimonio lírico: muchos modos de testimoniar a través del arte poético.",
+		desc: "Un libro de poesía de vigorosos trazos, lleno de resonancias múltiples, que capta las esencias alienantes de la circunstancia. El lector agradecerá mucho esta oferta lírica.",
 		frag: "Hay muchos modos de testimoniar a través del arte poético, / con sus respectivas correspondencias de carácter receptivo.",
 	},
 	{
@@ -852,7 +852,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321674",
 		cover: P + "este-hombre-que-me-invento-benita-lopez-penate-y-reyna-esperanza-cruz-cubierta.webp",
-		desc: "Poemario de Benita López Peñate. Un hombre que no existe del que no se puede dejar de escribir.",
+		desc: "Libro escrito en coordinación, con una temperatura y sabiduría inusuales. Sorprenderá y seducirá profundamente al lector por su riqueza expresiva y su coherencia en el discurso.",
 		frag: "Un día de agosto de 2018, la poeta canaria Benita López / escribía en uno de los diarios mensajes: / «Cómo voy a escribirle a un hombre que no existe».",
 	},
 	{
@@ -872,7 +872,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321240",
 		cover: P + "valor-de-uso-ediel-perez-noguera-cubierta-del-digital.webp",
-		desc: "Poemario de Ediel Pérez Noguera. El valor único de la auténtica obra artística se funda en el ritual en que tuvo su primer y original valor útil.",
+		desc: "Una poesía que busca nuevos espacios de dicción, con rigor expresivo y aguda responsabilidad artística. Aunque no entrega con facilidad sus resonancias hondas, crea una rápida empatía con el lector.",
 		frag: "El valor único de la auténtica obra artística se funda en el ritual / en el que tuvo su primer y original valor útil.",
 	},
 	{
@@ -882,7 +882,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321437",
 		cover: P + "aturdido-por-la-sal-efrain-riveron-arguelles-cubierta.webp",
-		desc: "Poesía del repentista y escritor cubano Efraín Riverón Argüelles. Versos que el mar sala y la luna hala.",
+		desc: "Un notable repentista y escritor de la poesía cubana nos ofrece su mundo interior, conjugando su maestría en la décima y en el verso libre. El lector encontrará pasión, sensibilidad y audacia expresiva.",
 		frag: "Cuando la luna te hala / con no sé qué imantación / y adentro del corazón / algo retumba y resbala.",
 	},
 	{
@@ -892,7 +892,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321127",
 		cover: P + "evocacion-de-la-vida-aristides-vega-chapu-cubierta-del-digital.webp",
-		desc: "Poemario de Arístides Vega Chapú. Escribe los domingos y los jueves, casi siempre en la madrugada: su manera de vivir.",
+		desc: "Crónicas de la vida cultural, de diversas experiencias vitales, llenas de vida, nostalgia y reconocimiento. Escritas como quien conversa, y con una memoria que parece reeditar la riqueza de lo real.",
 		frag: "Escribo porque es mi manera de vivir. / Escribo los domingos y los jueves, o cualquier día, casi siempre en la madrugada.",
 	},
 	{
@@ -912,7 +912,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321186",
 		cover: P + "averias-cubierta.webp",
-		desc: "Poesía de Armando López Carralero. Averías: los desperfectos del tiempo, los rotos de la vida cotidiana.",
+		desc: "Poesía que procura penetrar en la realidad con el discernimiento que produce sumergirse en ella acopiando sus rizos y apariencias en una síntesis denunciadora. El lector verá pasar el viento de nuestra época.",
 	},
 	{
 		title: "Palabra por decir",
@@ -921,7 +921,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321224",
 		cover: P + "palabra-por-decir-cubierta.webp",
-		desc: "Poemario de Heriberto Machado Galiana. La palabra como horizonte: siempre queda algo por decir.",
+		desc: "Una selección poética de alta calidad, que expresa la trayectoria lírica de un creador que ya exhibe un cuajado estilo expresivo. El lector amante de la poesía agradecerá esta oferta confeccionada por el propio autor.",
 	},
 	// ── 2022 ─────────────────────────────────────────────────────────────────
 	{
@@ -931,7 +931,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321011",
 		cover: P + "des-equilibrios-y-una-cuerda-para-asirse-yanelys-encinosa-cabrera-cubierta-del-digital.webp",
-		desc: "Poemario de Yanelys Encinosa Cabrera. La poesía como ejercicio del espíritu: a través de sus movimientos se drenan grandes nudos de la angustia.",
+		desc: "Cuaderno lírico rico en matices expresivos y en testimonio de hondas experiencias. Agradará a los lectores su actualidad, su versatilidad formal y su capacidad para la síntesis afectiva.",
 		frag: "La poesía es un ejercicio del espíritu: a través de sus movimientos / se drenan eventualmente grandes nudos de la angustia.",
 	},
 	{
@@ -941,7 +941,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B09SP1G52G",
 		cover: P + "en-plena-oscilacion-de-la-balanza-reyna-esperanza-cruz-cubierta.webp",
-		desc: "Poemario de Reyna Esperanza Cruz. La balanza en plena oscilación: poesía de equilibrios imposibles.",
+		desc: "Un excelente volumen de poesía, que agradará mucho a los amantes del arte lírico por su autenticidad y belleza.",
 	},
 	{
 		title: "Siete golpes en la mesa",
@@ -950,7 +950,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B0BHL2XFCY",
 		cover: P + "siete-golpes-en-la-mesa-sergio-garcia-zamora-cubierta-del-digital.webp",
-		desc: "Poemario de Sergio García Zamora. La poesía es el pulso secreto de la nación cubana.",
+		desc: "Un poeta ya maduro, a pesar de su juventud, que ha demostrado su valía en las arenas más exigentes de Cuba, de América, de España. El lector sentirá profundamente los valores y juicios representados en esta antología.",
 		frag: "La poesía es el pulso secreto de la nación cubana. Ella fue el deseo de que la nación existiera; / el primer horizonte para los que soñaron con la patria.",
 	},
 	{
@@ -960,7 +960,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B0BGNMQ4T9",
 		cover: P + "nubes-sobre-un-techo-escarlata-julian-marcel-cubierta-del-digital.webp",
-		desc: "Poemario de Julián Marcel Baldemira. Ser poeta es ahondar en la realidad, en la nuestra y en la que nos circunda.",
+		desc: "Textos sucintos y apasionados, de abundante imaginación simbólica, que recrean experiencias de la infancia y de la adolescencia con eficacia artística. Los lectores quedarán cautivados.",
 		frag: "Ser poeta es ahondar en la realidad, en la nuestra y en la que nos circunda; / pero más que nada es ahondar en nuestras irrealidades.",
 	},
 	{
@@ -970,7 +970,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B0BFDZDVKJ",
 		cover: P + "sicomoro-que-arde-como-un-astro-odalys-interian-cubierta-del-digital.webp",
-		desc: "Poemario de Odalys Interián Guerra. Un árbol flamígero bajo el que crece y madura una voz poética singular.",
+		desc: "Poesía de fuerte temperatura expresiva, rica en símbolos, que mueve visiones, aunque no pierde nunca sus ligaduras con lo circunstante. Un vocabulario emblemático recorre sus páginas, de dramático aliento.",
 		frag: "Bajo el árbol flamígero de la poesía: / es sumamente agradable ver crecer y madurar las flores de una voz.",
 	},
 	{
@@ -980,7 +980,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321100",
 		cover: P + "caida-libre-aldo-sanchez-herrera-cubierta.webp",
-		desc: "Poemario de Aldo Sánchez Herrera. La poesía como exploración profunda: un método de conocimiento.",
+		desc: "Una alta confesionalidad junto a un abierto sentimiento crítico revelan un poeta de estirpe. Su lenguaje versicular da testimonio de hondas exploraciones. El lector apreciará la cabal autenticidad de esta poesía.",
 		frag: "La poesía es un método de conocimiento, / y uno de los más sinérgicos de entre los que el ser humano posee.",
 	},
 	{
@@ -990,7 +990,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321143",
 		cover: P + "edificio-cuba-aristides-vega-chapu-cubierta.webp",
-		desc: "Poemario de Arístides Vega Chapú. En una esquina de la plaza Leoncio Vidal hay un lumínico que dice Edificio Cuba.",
+		desc: "Un notable poeta cubano reúne sus versos en un mural vivo, escogido y compuesto sabiamente. Un conjunto vital y estremecido, donde la verdad compleja de nuestra existencia encuentra estribo y espejo.",
 		frag: "En una de las esquinas de la plaza Leoncio Vidal, en Santa Clara / —ciudad en la que nací en 1962—, hay un lumínico que dice Edificio Cuba.",
 	},
 	{
@@ -1000,7 +1000,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "292532116X",
 		cover: P + "tu-roto-olor-de-feia-encaminada-pedro-peglez-cubierta-del-digital.webp",
-		desc: "Poemario de Pedro Péglez González. Feia: hada para los búlgaros. Un juguete con asonancia descendida.",
+		desc: "Un volumen de rica sensorialidad, de refinada belleza, que tiene el amor como tema central. Sonetos y décimas que harán muy agradable la lectura. El lector disfrutará la maestría de la representación poética.",
 		frag: "Niña Feia, Feia niña, / (Juguete con asonancia descendida.) / Feia: Hada para los búlgaros.",
 	},
 	{
@@ -1010,7 +1010,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "2925321003",
 		cover: P + "indagacion-de-la-sombra-yandrey-lay-cubierta-del-digital.webp",
-		desc: "Ensayos de Yandrey Lay Fabregat. Una dinámica de reflexiones que constituye un sistema: una manera de ver el mundo.",
+		desc: "Un volumen de alto nivel reflexivo, con inquietudes y propuestas profundas sobre el desarrollo de nuestros sistemas sociales y su enorme complejidad, que sacudirá la mente de los lectores.",
 		frag: "Las opiniones que se vierten en este libro constituyen un sistema. / Son una manera de ver el mundo, una cosmogonía analítica.",
 	},
 	{
@@ -1020,7 +1020,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B09ZDZT248",
 		cover: P + "musica-de-fondo-carmen-amelia-del-cristo-cubierta.webp",
-		desc: "Primer poemario de Carmen Amelia del Cristo en Cristálida. La música que siempre suena, la que nadie escucha.",
+		desc: "Un volumen que reúne vivencias cardinales de la persona, con un dinámico tratamiento de la experiencia y gran capacidad de síntesis. El lector quedará cautivado por la fluidez, belleza y honradez de la expresión.",
 	},
 	{
 		title: "Sola como avara sobre su montaña de oro",
@@ -1029,7 +1029,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B09WLDQB2J",
 		cover: P + "sola-como-avara-sobre-su-montana-de-oro-maria-liliana-celorrio-cubierta.webp",
-		desc: "Poemario de María Liliana Celorrio. La soledad como montaña de oro: una voz que guarda con avaricia su tesoro interior.",
+		desc: "Volumen poético de gran fuerza expresiva, que reúne ricas impresiones del mundo, profundos sentimientos, fluidez enunciativa y abundante pasión simbólica.",
 	},
 	{
 		title: "La campana en el abismo",
@@ -1038,7 +1038,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "B09SXGPC7V",
 		cover: P + "la-campana-en-el-abismo-roberto-manzano-cubierta.webp",
-		desc: "Tres poemas extensos escritos bajo precariedad y angustia. Un libro de altísima fidelidad al lenguaje poético, contrario al «periodismo lírico».",
+		desc: "Un volumen lírico de gran densidad simbólica, pleno de visiones humanistas. Constituido por tres cantos esenciales, refleja las recónditas tramas de nuestra compleja época.",
 		frag: "Lo terrible no es la altura, / sino la pendiente.",
 	},
 	{
@@ -1048,7 +1048,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "B09TDSFXY9",
 		cover: P + "el-hombre-cotidiano-roberto-manzano-cubierta.webp",
-		desc: "Estampas líricas de la jornada, mesa, mano y oficio. Un libro de mirada baja sobre los enseres y las horas, escrito desde una conciencia de justicia.",
+		desc: "Poesía de la experiencia, basada en la circunstancia diaria, que no pierde el anhelo de trascendencia de la vida humana. Aborda diferentes momentos y matices de la vivencia espiritual en el marco de la cotidianidad, con intensidad lírica.",
 		frag: "Sobre la breve mesa de escribir / ―como una procesión― el mundo pasa.",
 	},
 	{
@@ -1058,7 +1058,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "B09WLYKM3H",
 		cover: P + "rapsodia-de-vivir-roberto-manzano-cubierta.webp",
-		desc: "Suite de poemas extensos, viaje espiritual por la espuma, el viento, las horas. La voz se vuelve cada vez más sinfónica y meditativa.",
+		desc: "Entre la atmósfera lírica y la secuencia épica, este conjunto de textos ofrece una experiencia estética y biográfica que atraerá a los amantes de la poesía.",
 		frag: "Partimos con el alba hacia la más lejana / espuma, lentos por canales verdes.",
 	},
 	{
@@ -1068,7 +1068,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "B09YVJRJTS",
 		cover: P + "defensa-de-la-poesia-roberto-manzano-cubierta.webp",
-		desc: "Conjunto de ensayos y aforismos sobre poesía. Manifiesto sereno y luminoso del poeta-maestro.",
+		desc: "Con este título abrimos la colección de literatura de no ficción, con tres conjuntos críticos del poeta y ensayista cubano Roberto Manzano. El lector reflexionará sobre la poesía y sus complejas relaciones con la realidad.",
 		frag: "La poesía es la medida emocional de la inteligencia. / La poesía es una temperatura salvífica.",
 	},
 	{
@@ -1078,7 +1078,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "B09TMYWDJ2",
 		cover: P + "la-hilacha-y-otras-transfiguraciones-roberto-manzano-cubierta.webp",
-		desc: "Reúne cuatro conjuntos atravesados por una atmósfera tonal común: el dolor como tránsito hacia un canto más alto. Premio Milanés 1997.",
+		desc: "Se reúnen en este volumen cuatro conjuntos, diversos en formas y afines en tono y en atmósfera. Tratan de múltiples asuntos, y la mirada del sujeto lírico ofrece una fuerte unidad general. El lector vivirá una experiencia de lectura inolvidable.",
 		frag: "Mecánica del día, de cómo el día se mueve y nutre, / de cómo se va de un día a otro.",
 	},
 	{
@@ -1088,7 +1088,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "B09XRS5KX4",
 		cover: P + "puerta-al-camino-roberto-manzano-cubierta.webp",
-		desc: "Primer libro público del autor. Conjunto lírico de la tierra, con voz íntima y musicalidad transparente. Forma con Canto a la sabana el díptico fundacional de su «Poesía de la tierra».",
+		desc: "En Puerta al camino el propósito estético consiste en recuperar la pauta tradicional para la expresión contemporánea, según las demandas creadoras de su autor en su temprana juventud.",
 		frag: "Con tu terrosa curva de tinaja / arde mi sangre y trabaja.",
 	},
 	{
@@ -1098,7 +1098,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B09XJQ9J52",
 		cover: P + "lo-que-escriben-mis-ojos-benita-lopez-penate-cubierta.webp",
-		desc: "Selección poética de Benita López Peñate. Lo que los ojos escriben cuando la mano no alcanza.",
+		desc: "Un singular conjunto de versos, lleno de vitalidad y sorpresa, pleno de la sabiduría y sensibilidad de la buena poesía. El lector quedará sumamente complacido con sus pensamientos e impresiones del mundo.",
 	},
 	{
 		title: "Crónicas domésticas",
@@ -1107,7 +1107,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Narrativa",
 		amazonUrl: A + "B09S5ZNBM8",
 		cover: P + "cronicas-domesticas-ana-nunez-gonzalez-cubierta.webp",
-		desc: "Crónicas de la cotidianidad de Ana Núñez González. El espacio doméstico como territorio de resistencia y de sentido.",
+		desc: "Un atractivo manojo de cuentos, breves e ingeniosos, que ofrecerá observaciones especiales de las relaciones humanas.",
 	},
 	{
 		title: "Canciones eslavas",
@@ -1116,7 +1116,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Poesía",
 		amazonUrl: A + "B09XZMCNGW",
 		cover: P + "canciones-eslavas-jesus-lozada-guevara-cubierta.webp",
-		desc: "Poesía de Jesús Lozada Guevara. Canciones que llevan el acento de otras latitudes al español.",
+		desc: "Libro poético de una composición singular, una bella arquitectura simbólica. Trascendente en su impulso visionario y en su concepción sinérgica del espíritu. El lector atento quedará gratamente sorprendido.",
 	},
 	// ── 2021 ─────────────────────────────────────────────────────────────────
 	{
@@ -1126,7 +1126,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Roberto Manzano",
 		amazonUrl: A + "B09PKDLK2T",
 		cover: P + "pensamientos-libres-roberto-manzano-cubierta.webp",
-		desc: "Conjunto de prosas breves y fulgurantes. Mezcla de aforismo, parábola y meditación. Sentencias que parecen tallar el pensamiento sobre el barro.",
+		desc: "Poesía cosmovisiva, que muestra la visión humanista del autor, a partir de sus concepciones de la existencia humana.",
 		frag: "Mis hijos crecieron de mis manos. / De mi sangre diaria germinaron sus ojos.",
 	},
 ];
