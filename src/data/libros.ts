@@ -906,15 +906,6 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		frag: "Cada persona es un lenguaje. El lenguaje está hecho para la relación de los individuos con el mundo. / Y cada individuo es un lenguaje no necesariamente compartido.",
 	},
 	{
-		title: "Agenda perpetua",
-		author: "Cristálida Ediciones",
-		year: 2023,
-		genre: "Poesía",
-		amazonUrl: A + "B0C1JD7977",
-		cover: P + "agenda-perpetua-cubierta.webp",
-		desc: "Agenda literaria perpetua de Cristálida Ediciones. Un objeto-libro para escritores y lectores.",
-	},
-	{
 		title: "Averías",
 		author: "Armando López Carralero",
 		year: 2023,
