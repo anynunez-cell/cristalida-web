@@ -300,7 +300,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		amazonUrl: A + "2925446388",
 		cover: P + "los-guijarros-parlantes-camila-reimers-cubierta.webp",
 		square: true,
-		desc: "Versión en español de la artista y escritora chilena Camila Reimers. Las piedras que hablan en el río.",
+		desc: "Los guijarros parlantes reúne relatos que exploran los encuentros entre personas, culturas y formas de entender el mundo. Entre la realidad y la poesía, estas historias combinan emoción, humor y reflexión para revelar lo que nos une más allá de las diferencias.",
 	},
 	{
 		title: "Fugacidad es todo lo que tengo",
