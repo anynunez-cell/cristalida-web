@@ -1,0 +1,381 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { libros } from '../../data/libros';
+
+export function getStaticPaths() {
+	return libros.map(libro => ({
+		params: { slug: libro.slug },
+		props: { libro },
+	}));
+}
+
+const { libro } = Astro.props;
+
+const genreLabel: Record<string, string> = {
+	"Roberto Manzano": "Roberto Manzano",
+	"Poesía": "Poesía",
+	"Narrativa": "Narrativa",
+	"Álbum ilustrado": "Álbum ilustrado",
+	"Infantil": "Literatura infantil",
+};
+
+const isSquare = libro.square || libro.genre === "Álbum ilustrado";
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "Book",
+	"name": libro.title,
+	"author": {
+		"@type": "Person",
+		"name": libro.author,
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "Cristálida Ediciones",
+		"url": "https://cristalidaediciones.com",
+	},
+	"datePublished": String(libro.year),
+	"inLanguage": libro.title === libro.title && libro.genre !== undefined ? "es" : "es",
+	"genre": libro.genre,
+	"url": libro.amazonUrl,
+	...(libro.cover ? { "image": `https://cristalidaediciones.com${libro.cover}` } : {}),
+	...(libro.desc ? { "description": libro.desc } : {}),
+};
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead
+			title={`${libro.title} — ${libro.author} · Cristálida Ediciones`}
+			description={libro.desc ?? `${libro.title}, de ${libro.author}. Publicado por Cristálida Ediciones en ${libro.year}.`}
+			image={libro.cover}
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<body>
+		<Header />
+		<main>
+
+			<!-- BREADCRUMB -->
+			<nav class="breadcrumb" aria-label="Ruta de navegación">
+				<a href="/">Inicio</a>
+				<span>›</span>
+				<a href="/catalogo">Catálogo</a>
+				<span>›</span>
+				<span>{libro.title}</span>
+			</nav>
+
+			<!-- LIBRO HERO -->
+			<section class="libro-hero">
+				<div class="libro-cover-wrap">
+					{libro.cover
+						? <img
+								src={libro.cover}
+								alt={`Portada de ${libro.title}`}
+								class={`libro-cover${isSquare ? ' square' : ''}`}
+								loading="eager"
+							/>
+						: <div class="libro-cover-placeholder">
+								<span>{libro.title[0]}</span>
+							</div>
+					}
+				</div>
+
+				<div class="libro-meta">
+					<span class="genre-badge">{genreLabel[libro.genre] ?? libro.genre}</span>
+					<h1>{libro.title}</h1>
+					<p class="autor-link-wrap">
+						<a href="/autores" class="autor-nombre">{libro.author}</a>
+					</p>
+					<p class="year">Cristálida Ediciones · {libro.year}</p>
+
+					{libro.desc && (
+						<p class="libro-desc">{libro.desc}</p>
+					)}
+
+					{libro.frag && (
+						<blockquote class="libro-frag">
+							«{libro.frag}»
+						</blockquote>
+					)}
+
+					<div class="cta-group">
+						<a href={libro.amazonUrl} target="_blank" rel="noopener" class="btn-amazon">
+							Comprar en Amazon →
+						</a>
+						<a href="/catalogo" class="btn-back">← Volver al catálogo</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- RESEÑA -->
+			{libro.resena
+				? (
+					<section class="resena-section">
+						<h2>Reseña</h2>
+						<div class="resena-body" set:html={libro.resena} />
+					</section>
+				)
+				: (
+					<section class="resena-placeholder">
+						<p>¿Leíste este libro? Escríbenos a <a href="mailto:contacto@cristalidaediciones.com">contacto@cristalidaediciones.com</a> y publica tu reseña aquí.</p>
+					</section>
+				)
+			}
+
+			<!-- OTROS LIBROS DEL AUTOR -->
+			{(() => {
+				const otros = libros.filter(l => l.author === libro.author && l.slug !== libro.slug).slice(0, 4);
+				return otros.length > 0 ? (
+					<section class="otros-libros">
+						<h2>Más de {libro.author}</h2>
+						<div class="otros-grid">
+							{otros.map(otro => (
+								<a href={`/libros/${otro.slug}`} class="otro-card">
+									{otro.cover
+										? <img src={otro.cover} alt={otro.title} class={`otro-cover${otro.square || otro.genre === 'Álbum ilustrado' ? ' square' : ''}`} loading="lazy" />
+										: <div class="otro-placeholder">{otro.title[0]}</div>
+									}
+									<p class="otro-title">{otro.title}</p>
+									<p class="otro-year">{otro.year}</p>
+								</a>
+							))}
+						</div>
+					</section>
+				) : null;
+			})()}
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+/* BREADCRUMB */
+.breadcrumb {
+	font-size: 0.85rem;
+	color: var(--color-muted);
+	margin-bottom: 2.5rem;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--color-secondary); font-weight: 500; }
+.breadcrumb a:hover { color: var(--color-accent); }
+
+/* HERO */
+.libro-hero {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	gap: 3.5rem;
+	align-items: start;
+	margin-bottom: 3rem;
+}
+
+.libro-cover-wrap {
+	position: sticky;
+	top: 2rem;
+}
+
+.libro-cover {
+	width: 100%;
+	aspect-ratio: 2/3;
+	object-fit: cover;
+	border-radius: 6px;
+	box-shadow: 0 8px 32px rgba(61,43,107,0.22);
+	display: block;
+}
+.libro-cover.square { aspect-ratio: 1/1; }
+.libro-cover-placeholder {
+	width: 100%;
+	aspect-ratio: 2/3;
+	background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 8px 32px rgba(61,43,107,0.22);
+}
+.libro-cover-placeholder span {
+	font-family: var(--font-heading);
+	font-size: 6rem;
+	color: rgba(255,255,255,0.2);
+}
+
+/* METADATA */
+.genre-badge {
+	display: inline-block;
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: var(--color-accent);
+	font-weight: 700;
+	background: rgba(201,168,76,0.1);
+	border: 1px solid rgba(201,168,76,0.3);
+	padding: 0.2rem 0.7rem;
+	border-radius: 20px;
+	margin-bottom: 1rem;
+}
+.libro-meta h1 {
+	font-size: clamp(1.8rem, 4vw, 2.8rem);
+	line-height: 1.15;
+	margin: 0 0 0.5rem;
+	color: var(--color-primary);
+}
+.autor-link-wrap { margin: 0 0 0.25rem; }
+.autor-nombre {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--color-secondary);
+}
+.autor-nombre:hover { color: var(--color-accent); }
+.year {
+	font-size: 0.85rem;
+	color: var(--color-muted);
+	margin: 0 0 1.5rem;
+	letter-spacing: 0.05em;
+}
+
+.libro-desc {
+	font-size: 1rem;
+	line-height: 1.75;
+	color: var(--color-text);
+	margin: 0 0 1.5rem;
+}
+
+.libro-frag {
+	border-left: 3px solid var(--color-accent);
+	padding: 0.75rem 1.25rem;
+	font-family: var(--font-heading);
+	font-style: italic;
+	font-size: 1.1rem;
+	color: var(--color-secondary);
+	margin: 0 0 2rem;
+	line-height: 1.6;
+	background: rgba(201,168,76,0.06);
+	border-radius: 0 4px 4px 0;
+}
+
+/* CTA */
+.cta-group {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.btn-amazon {
+	background: var(--color-primary);
+	color: white;
+	padding: 0.75rem 1.75rem;
+	border-radius: 4px;
+	font-weight: 700;
+	font-size: 0.95rem;
+	display: inline-block;
+	transition: background 0.2s;
+}
+.btn-amazon:hover { background: var(--color-secondary); color: white; }
+.btn-back {
+	color: var(--color-muted);
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+.btn-back:hover { color: var(--color-primary); }
+
+/* RESEÑA */
+.resena-section {
+	background: white;
+	border-radius: 8px;
+	padding: 2.5rem;
+	box-shadow: var(--box-shadow);
+	margin-bottom: 3rem;
+}
+.resena-section h2 { margin-bottom: 1.5rem; }
+.resena-body {
+	font-size: 1rem;
+	line-height: 1.8;
+	color: var(--color-text);
+}
+
+.resena-placeholder {
+	background: rgba(61,43,107,0.04);
+	border: 1.5px dashed rgba(61,43,107,0.15);
+	border-radius: 8px;
+	padding: 1.5rem 2rem;
+	margin-bottom: 3rem;
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--color-muted);
+}
+.resena-placeholder a { color: var(--color-secondary); }
+
+/* OTROS LIBROS */
+.otros-libros {
+	margin-bottom: 3rem;
+}
+.otros-libros h2 { margin-bottom: 1.5rem; }
+.otros-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+	gap: 1.25rem;
+}
+.otro-card {
+	display: block;
+	text-decoration: none;
+	transition: transform 0.2s;
+}
+.otro-card:hover { transform: translateY(-3px); }
+.otro-cover {
+	width: 100%;
+	aspect-ratio: 2/3;
+	object-fit: cover;
+	border-radius: 4px;
+	box-shadow: 0 3px 12px rgba(61,43,107,0.15);
+	display: block;
+	margin-bottom: 0.5rem;
+}
+.otro-cover.square { aspect-ratio: 1/1; }
+.otro-placeholder {
+	width: 100%;
+	aspect-ratio: 2/3;
+	background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--font-heading);
+	font-size: 2.5rem;
+	color: rgba(255,255,255,0.2);
+	margin-bottom: 0.5rem;
+}
+.otro-title {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--color-primary);
+	margin: 0 0 0.15rem;
+	line-height: 1.3;
+}
+.otro-year {
+	font-size: 0.75rem;
+	color: var(--color-muted);
+	margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 760px) {
+	.libro-hero {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+	.libro-cover-wrap {
+		position: static;
+		max-width: 220px;
+		margin: 0 auto;
+	}
+	.libro-meta h1 { font-size: 1.8rem; }
+	.otros-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+}
+</style>
