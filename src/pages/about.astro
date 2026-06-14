@@ -1,63 +1,186 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const equipo = [
+  {
+    nombre: "Ana Núñez González",
+    rol: "Coordinadora general y productora editorial",
+    bio: "Narradora, abogada, bibliotecaria, editora y promotora (La Habana, Cuba, 1971). Graduada en Derecho por la Universidad de La Habana. Máster en Ciencias de la Información por la Universidad de Montreal. Egresada del Centro de Formación Literaria Onelio Jorge Cardoso. Trabaja como bibliotecaria en Amos, Quebec, Canadá. Cuentos suyos han sido publicados en antologías de Cuba, Brasil y España. Colabora con el Proyecto Sherezade de la Universidad de Manitoba. Miembro fundadora de Costanera Editorial. Fundadora del Proyecto Synergos. Ha publicado Crónicas domésticas y Adela y el poder, ambos en versiones español y francés por Cristálida Ediciones.",
+    contacto: "anynunez@gmail.com",
+    url: "https://ananunezgonzalez.com",
+  },
+  {
+    nombre: "Reyna Esperanza Cruz",
+    rol: "Editora y tallerista",
+    bio: "Poeta, escritora para niños, narradora oral, declamadora, promotora y museóloga (Puerto Padre, Cuba, 1956). Imparte talleres sobre poesía en general y la décima en específico. Miembro fundadora del Grupo Iberoamericano de Amigos de la Décima Espinel Cucalambé, de Mujeres Décima al filo y de Ala Décima. Placa Cucalambé (1996) y Orden Raúl Gómez García (2000). Ha publicado ocho cuadernos de poesía para adultos y niños, y uno de cuentos infantiles. Fundadora del Taller Cubano de Poesía de Cordel y del Grupo Eurekíada. Fundadora del Proyecto Synergos.",
+    contacto: "reinaaruba@gmail.com",
+    url: null,
+  },
+  {
+    nombre: "Roberto Manzano",
+    rol: "Editor y formador poético",
+    bio: "Poeta, ensayista, editor, ilustrador, promotor y profesor (Ciego de Ávila, Cuba, 1949). Licenciado en Educación. Diplomado en Investigación Sociocultural. Máster en Cultura Latinoamericana. Premio de Poesía Nicolás Guillén, Premio Espejo de Paciencia y Premio Samuel Feijóo, entre otras múltiples distinciones. Ha sido editor en importantes casas editoriales y revistas de Cuba. Sus trabajos de antólogo y crítico abarcan la creación poética cubana tradicional y contemporánea. Ha ofrecido recitales y conferencias en México, Venezuela, Estados Unidos, Argentina, Paraguay, Colombia, Panamá y China. Fundador del Grupo Eurekíada y del Proyecto Synergos.",
+    contacto: "encaminismo@gmail.com",
+    url: null,
+  },
+  {
+    nombre: "Yanelys Encinosa Cabrera",
+    rol: "Editora y crítica literaria",
+    bio: "Poeta, crítica, ensayista y promotora (Bejucal, Mayabeque, Cuba, 1983). Licenciada en Letras. Ha publicado Del diario de Eva y otras prehistorias (Premio David 2007, Ediciones Unión) y (Des)equilibrios y una cuerda para asirse (EDP University 2015 / Cristálida Ediciones 2022). Poemas suyos aparecen en más de veinte antologías dentro y fuera de Cuba. Miembro de la UNEAC. Ha dirigido la Casa de la Poesía y el Centro Hispanoamericano de Cultura de la Oficina del Historiador de La Habana. Editora de la Revista de la Biblioteca Nacional José Martí y directora del proyecto cartonero Costanera Editorial. Fundadora del Proyecto Synergos.",
+    contacto: "yanelysec@gmail.com",
+    url: null,
+  },
+];
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead
+      title="Equipo — Cristálida Ediciones"
+      description="El equipo editorial de Cristálida Ediciones: coordinación, edición y formación poética."
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "Equipo de Cristálida Ediciones",
+      "url": "https://cristalidaediciones.com/about",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Cristálida Ediciones",
+        "url": "https://cristalidaediciones.com"
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Cristálida Ediciones",
+        "member": equipo.map(p => ({
+          "@type": "OrganizationRole",
+          "member": {
+            "@type": "Person",
+            "name": p.nombre,
+            "email": `mailto:${p.contacto}`,
+            ...(p.url ? { "url": p.url } : {})
+          },
+          "roleName": p.rol
+        }))
+      }
+    })} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="page-header">
+        <h1>Nuestro equipo</h1>
+        <p class="lead">Las personas que hacen posible Cristálida Ediciones.</p>
+      </div>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+      <div class="equipo-lista">
+        {equipo.map(persona => (
+          <article class="persona-card" itemscope itemtype="https://schema.org/Person">
+            <div class="persona-header">
+              <div>
+                <h2 class="persona-nombre" itemprop="name">{persona.nombre}</h2>
+                <p class="persona-rol" itemprop="jobTitle">{persona.rol}</p>
+              </div>
+            </div>
+            <p class="persona-bio" itemprop="description">{persona.bio}</p>
+            <div class="persona-links">
+              <a href={`mailto:${persona.contacto}`} class="persona-contacto" itemprop="email">
+                {persona.contacto}
+              </a>
+              {persona.url && (
+                <a href={persona.url} target="_blank" rel="noopener" class="persona-web">
+                  Sitio web ↗
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+<style>
+  .page-header {
+    text-align: center;
+    padding: 3rem 1rem 2.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .lead {
+    font-size: 1.1rem;
+    color: var(--color-muted);
+  }
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
-
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+  .equipo-lista {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .persona-card {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(61, 43, 107, 0.12);
+  }
+  .persona-card:last-child {
+    border-bottom: none;
+  }
+  .persona-header {
+    margin-bottom: 1rem;
+  }
+  .persona-nombre {
+    font-size: 1.45rem;
+    color: var(--color-primary);
+    margin: 0 0 0.2rem;
+  }
+  .persona-rol {
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0;
+  }
+  .persona-bio {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin: 0 0 1.25rem;
+  }
+  .persona-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .persona-contacto {
+    font-size: 0.88rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+  }
+  .persona-contacto:hover { color: var(--color-accent); }
+  .persona-web {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    padding: 0.25rem 0.7rem;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .persona-web:hover {
+    background: var(--color-primary);
+    color: #fff;
+  }
+</style>
