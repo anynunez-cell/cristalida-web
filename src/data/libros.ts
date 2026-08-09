@@ -465,7 +465,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		amazonUrl: A + "2925446140",
 		cover: P + "la-flecha-y-el-infinito-roberto-manzano-cubierta.webp",
 		square: true,
-		desc: "Poema mural sobre el seguir, la patria interior. Cierra la trilogía con Eurekíada y La piedra de Sísifo.",
+		desc: "Poema mural sobre el seguir y la patria interior.",
 		frag: "Toda poesía algo tiene de póstumo: / es como un recado de un muerto.",
 	},
 	{
@@ -486,7 +486,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		amazonUrl: A + "2925446078",
 		cover: P + "eurekiada-roberto-manzano-cubierta.webp",
 		square: true,
-		desc: "Poema mural, marcha ascendente del pensamiento. Diálogo permanente con la idea de hallazgo. Forma trilogía con La flecha y el infinito y La piedra de Sísifo.",
+		desc: "Poema mural, marcha ascendente del pensamiento. Diálogo permanente con la idea de hallazgo.",
 		frag: "Siempre estamos delante de la Puerta: / hay detrás de nosotros una sombra / y allá lejos se ve la Luz abierta!",
 	},
 	{
