@@ -28,6 +28,25 @@ function slugify(title: string, author: string): string {
 const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 	// ── 2026 ─────────────────────────────────────────────────────────────────
 	{
+		title: "El árbol y la escarcha",
+		author: "Ana Núñez González · Norge Céspedes Díaz (eds.)",
+		year: 2026,
+		genre: "Antología",
+		amazonUrl: A + "2925627005",
+		cover: P + "el-arbol-y-la-escarcha-cubierta.jpg",
+		square: true,
+		desc: "Muestra de autores cubano-canadienses. Antología compilada por Ana Núñez González y Norge Céspedes Díaz.",
+	},
+	{
+		title: "No me preguntes cuándo",
+		author: "Arturo Arango",
+		year: 2026,
+		genre: "Narrativa",
+		amazonUrl: A + "2925627021",
+		cover: P + "no-me-preguntes-cuando-arturo-arango-cubierta.jpg",
+		desc: "Novela del reconocido escritor cubano Arturo Arango.",
+	},
+	{
 		title: "El discurso de José Martí",
 		author: "Roberto Manzano",
 		year: 2026,
