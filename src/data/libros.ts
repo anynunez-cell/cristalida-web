@@ -28,6 +28,15 @@ function slugify(title: string, author: string): string {
 const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 	// ── 2026 ─────────────────────────────────────────────────────────────────
 	{
+		title: "Rómpete una pierna",
+		author: "Norge Céspedes",
+		year: 2026,
+		genre: "Anécdotas",
+		amazonUrl: A + "2925627064",
+		cover: P + "rompete-una-pierna-norge-cespedes-cubierta.jpg",
+		desc: "Anécdotas de bambalinas del escritor y periodista cubano Norge Céspedes Díaz.",
+	},
+	{
 		title: "El árbol y la escarcha",
 		author: "Ana Núñez González · Norge Céspedes Díaz (eds.)",
 		year: 2026,
