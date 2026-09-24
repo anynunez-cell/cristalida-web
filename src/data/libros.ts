@@ -34,7 +34,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Antología",
 		amazonUrl: A + "2925627005",
 		cover: P + "el-arbol-y-la-escarcha-cubierta.jpg",
-		square: true,
+		square: false,
 		desc: "Muestra de autores cubano-canadienses. Antología compilada por Ana Núñez González y Norge Céspedes Díaz.",
 	},
 	{
