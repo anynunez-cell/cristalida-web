@@ -31,7 +31,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		title: "Rómpete una pierna",
 		author: "Norge Céspedes",
 		year: 2026,
-		genre: "Anécdotas",
+		genre: "Narrativa",
 		amazonUrl: A + "2925627064",
 		cover: P + "rompete-una-pierna-norge-cespedes-cubierta.jpg",
 		desc: "Anécdotas de bambalinas del escritor y periodista cubano Norge Céspedes Díaz.",
