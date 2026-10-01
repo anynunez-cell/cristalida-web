@@ -69,7 +69,8 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Narrativa",
 		amazonUrl: A + "2925627021",
 		cover: P + "no-me-preguntes-cuando-arturo-arango-cubierta.jpg",
-		desc: "Novela del reconocido escritor cubano Arturo Arango.",
+		isbn: "9782925627029",
+		desc: "Contada con una mezcla de humor, ironía y una mirada profundamente cubana, No me preguntes cuándo es la historia de un hombre que no eligió el exilio, pero que debe aprender a vivir con sus consecuencias.\n\nSu protagonista, Ernesto Camilo Miranda Bastarrechea, es un actor cubano de Manzanillo que viaja a México para cumplir una temporada de trabajo. Sin embargo, lo que debía ser una estancia breve se transforma, por una serie de circunstancias inesperadas, en una vida lejos de Cuba. Ernesto Camilo reconstruye su historia y se pregunta hasta dónde puede llegar la distancia entre quien fuimos y quien terminamos siendo.\n\nUn placer de lectura garantizado.",
 	},
 	{
 		title: "El discurso de José Martí",
