@@ -23,25 +23,30 @@ const genreLabel: Record<string, string> = {
 
 const isSquare = libro.square || libro.genre === "Álbum ilustrado";
 
+const descPlain = libro.desc?.replace(/\n/g, ' ').slice(0, 155) ?? `${libro.title}, de ${libro.author}. Publicado por Cristálida Ediciones en ${libro.year}.`;
+
 const schema = {
 	"@context": "https://schema.org",
 	"@type": "Book",
 	"name": libro.title,
-	"author": {
-		"@type": "Person",
-		"name": libro.author,
-	},
+	...(libro.autoresAntologia
+		? { "editor": [
+				{ "@type": "Person", "name": "Ana Núñez González" },
+				{ "@type": "Person", "name": "Norge Céspedes Díaz" },
+			]}
+		: { "author": { "@type": "Person", "name": libro.author } }),
 	"publisher": {
 		"@type": "Organization",
 		"name": "Cristálida Ediciones",
 		"url": "https://cristalidaediciones.com",
 	},
 	"datePublished": String(libro.year),
-	"inLanguage": libro.title === libro.title && libro.genre !== undefined ? "es" : "es",
+	"inLanguage": "es",
 	"genre": libro.genre,
-	"url": libro.amazonUrl,
+	"url": `https://cristalidaediciones.com/libros/${libro.slug}`,
+	...(libro.isbn ? { "isbn": libro.isbn } : {}),
 	...(libro.cover ? { "image": `https://cristalidaediciones.com${libro.cover}` } : {}),
-	...(libro.desc ? { "description": libro.desc } : {}),
+	...(libro.desc ? { "description": descPlain } : {}),
 };
 ---
 
@@ -50,7 +55,7 @@ const schema = {
 	<head>
 		<BaseHead
 			title={`${libro.title} — ${libro.author} · Cristálida Ediciones`}
-			description={libro.desc ?? `${libro.title}, de ${libro.author}. Publicado por Cristálida Ediciones en ${libro.year}.`}
+			description={descPlain}
 			image={libro.cover}
 		/>
 		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -93,7 +98,27 @@ const schema = {
 					<p class="year">Cristálida Ediciones · {libro.year}</p>
 
 					{libro.desc && (
-						<p class="libro-desc">{libro.desc}</p>
+						<div class="libro-desc">
+							{libro.desc.split('\n\n').map(p => <p>{p}</p>)}
+						</div>
+					)}
+
+					{libro.autoresAntologia && (
+						<div class="autores-antologia">
+							<h2 class="autores-heading">Autores</h2>
+							<ul class="autores-lista">
+								{libro.autoresAntologia.map(nombre => (
+									<li>{nombre === "Ana Núñez González"
+										? <a href="https://ananunezgonzalez.com" target="_blank" rel="noopener">{nombre}</a>
+										: nombre
+									}</li>
+								))}
+							</ul>
+						</div>
+					)}
+
+					{libro.isbn && (
+						<p class="libro-isbn">ISBN {libro.isbn}</p>
 					)}
 
 					{libro.frag && (
@@ -245,6 +270,36 @@ const schema = {
 	line-height: 1.75;
 	color: var(--color-text);
 	margin: 0 0 1.5rem;
+}
+.libro-desc p { margin: 0 0 1rem; }
+.libro-desc p:last-child { margin-bottom: 0; }
+
+.autores-antologia { margin: 0 0 1.25rem; }
+.autores-heading {
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--color-muted);
+	font-weight: 700;
+	margin: 0 0 0.5rem;
+}
+.autores-lista {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem 1rem;
+}
+.autores-lista li { font-size: 0.9rem; color: var(--color-text); }
+.autores-lista a { color: var(--color-secondary); font-weight: 600; }
+.autores-lista a:hover { color: var(--color-accent); }
+
+.libro-isbn {
+	font-size: 0.82rem;
+	color: var(--color-muted);
+	margin: 0 0 1.5rem;
+	letter-spacing: 0.03em;
 }
 
 .libro-frag {

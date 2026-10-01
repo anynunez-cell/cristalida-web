@@ -12,6 +12,8 @@ export interface Libro {
 	desc?: string;
 	frag?: string;
 	resena?: string;
+	isbn?: string;
+	autoresAntologia?: string[];
 	slug?: string; // override automático solo cuando hay duplicado de título+autor
 }
 
@@ -44,7 +46,20 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		amazonUrl: A + "2925627005",
 		cover: P + "el-arbol-y-la-escarcha-cubierta.jpg",
 		square: false,
-		desc: "Muestra de autores cubano-canadienses. Antología compilada por Ana Núñez González y Norge Céspedes Díaz.",
+		isbn: "9782925627005",
+		desc: "El árbol y la escarcha reúne las voces de diez escritores cubano-canadienses que, desde diferentes ciudades y experiencias de vida, exploran los territorios íntimos de la inmigración, la identidad y la memoria.\n\nLos textos de Lizandro Arbolay, Ana Núñez González, María Karla Águila Díaz, Fernando Lobaina Quiala, Yansulier García Álvarez, Ihosvany Hernández González, Francisco García González, Lídice Megla, Hebert Poll Gutiérrez y Yordanis Domínguez Báez trazan un mapa literario de la experiencia migratoria.\n\nUn libro producido en tierra canadiense, pero lleno de cubanía.",
+		autoresAntologia: [
+			"Lizandro Arbolay",
+			"Ana Núñez González",
+			"María Karla Águila Díaz",
+			"Fernando Lobaina Quiala",
+			"Yansulier García Álvarez",
+			"Ihosvany Hernández González",
+			"Francisco García González",
+			"Lídice Megla",
+			"Hebert Poll Gutiérrez",
+			"Yordanis Domínguez Báez",
+		],
 	},
 	{
 		title: "No me preguntes cuándo",
