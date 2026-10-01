@@ -23,4 +23,4 @@ Fundada en Quebec en 2021, Cristálida Ediciones ha publicado más de cien títu
 
 ---
 
-*Tomado de Claustrofobias*
+*Tomado de [Claustrofobias](https://www.claustrofobias.com/primera-antologia-de-la-literatura-cubano-canadiense-en-viii-feria-iberoamericana-del-libro-en-canada/)*
