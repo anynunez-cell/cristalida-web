@@ -9,7 +9,7 @@ heroImage: ""
 
 El periodista, escritor y editor Norge Céspedes Díaz participará como invitado en la Feria Iberoamericana del Libro en Canadá, que tendrá lugar en Ottawa, donde presentará sus más recientes producciones literarias.
 
-"Uno es *Rómpete una pierna. Anécdotas entre bambalinas* y el otro *El árbol y la escarcha. Muestra de actores cubano-canadienses*, que constituye la primera antología de literatura cubano-canadiense, cuya selección preparé junto a la escritora Ana Núñez González, quien es la directora de Cristálida Ediciones, radicada en Montreal".
+"Uno es [*Rómpete una pierna. Anécdotas entre bambalinas*](/libros/rompete-una-pierna-norge-cespedes/) y el otro [*El árbol y la escarcha. Muestra de actores cubano-canadienses*](/libros/el-arbol-y-la-escarcha-ana-nunez-gonzalez-norge-cespedes-diaz-eds/), que constituye la primera antología de literatura cubano-canadiense, cuya selección preparé junto a la escritora Ana Núñez González, quien es la directora de Cristálida Ediciones, radicada en Montreal".
 
 *El árbol y la escarcha* surgió a partir de una visita anterior del autor cubano a Canadá, en otoño de 2023, cuando realizó allí una residencia artística.
 
@@ -25,7 +25,7 @@ Pero el volumen va más allá de plasmar la nostalgia de quien dice adiós a su 
 
 "No llegamos a contactar con todos, pero al final hicimos esta muestra que creo que puede ayudar a entender este proceso que viven quienes emigran y, sobre todo, a ver esta otra perspectiva que aportan desde Canadá estos cubanos que están allí y que tienen una sensibilidad que se va modificando con el paso del tiempo".
 
-*Rómpete una pierna. Anécdotas entre bambalinas* será el otro título que Céspedes Díaz pondrá a disposición de los lectores canadienses. Merecedor de la beca Juan Francisco Manzano del Comité provincial de la UNEAC (Unión de Escritores y Artistas de Cuba) en Matanzas, reúne medio centenar de testimonios de actores y directores escénicos de la Isla, de agrupaciones de casi todo el país, de teatro dramático, humorístico, lírico, callejero, titiritero.
+[*Rómpete una pierna. Anécdotas entre bambalinas*](/libros/rompete-una-pierna-norge-cespedes/) será el otro título que Céspedes Díaz pondrá a disposición de los lectores canadienses. Merecedor de la beca Juan Francisco Manzano del Comité provincial de la UNEAC (Unión de Escritores y Artistas de Cuba) en Matanzas, reúne medio centenar de testimonios de actores y directores escénicos de la Isla, de agrupaciones de casi todo el país, de teatro dramático, humorístico, lírico, callejero, titiritero.
 
 "Son anécdotas tras bambalinas del día a día, accidentes en puestas en escena, en ensayos, olvidos de textos, situaciones que suceden en la relación con el público, entre los propios actores, giras, una amplia gama de temas de ese tipo que habitualmente no son recibidos por el público porque el público ve esencialmente el hecho teatral y no lo que hay detrás.
 
@@ -43,7 +43,7 @@ Asimismo, considera el también narrador y ensayista, salda una deuda con la mem
 
 "Rómpete una pierna es un libro de homenaje al teatro y a la cultura cubana; pero además es entretenido, un aporte singular a la identidad, la memoria y el patrimonio de la nación cubana, que se diluye en su transcurrir efímero, y que a veces no se concientiza, dándole la importancia y el apoyo que necesita", al decir de Rodríguez Febles.
 
-*El árbol y la escarcha* y *Rómpete una pierna. Anécdotas entre bambalinas* son dos textos de este autor cubano al que podrán acceder en el ya cercano mes de octubre los lectores canadienses, al tiempo que devienen oportunidades de intercambio entre dos naciones aparentemente muy diferentes pero que mantienen un diálogo casi permanente, ahora también desde la literatura.
+[*El árbol y la escarcha*](/libros/el-arbol-y-la-escarcha-ana-nunez-gonzalez-norge-cespedes-diaz-eds/) y [*Rómpete una pierna. Anécdotas entre bambalinas*](/libros/rompete-una-pierna-norge-cespedes/) son dos textos de este autor cubano al que podrán acceder en el ya cercano mes de octubre los lectores canadienses, al tiempo que devienen oportunidades de intercambio entre dos naciones aparentemente muy diferentes pero que mantienen un diálogo casi permanente, ahora también desde la literatura.
 
 Norge Céspedes Díaz es narrador, ensayista, periodista y editor. Licenciado en Periodismo por la Universidad de La Habana, ha publicado más de una decena de libros, entre los que destacan *Oficio de cicerone* (cuento), *Historia clínica de un héroe* (ensayo) y *Un paraíso llamado Purilimpia* (testimonio).
 

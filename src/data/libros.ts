@@ -48,7 +48,7 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		cover: P + "el-arbol-y-la-escarcha-cubierta.jpg",
 		square: false,
 		isbn: "9782925627005",
-		desc: "El árbol y la escarcha reúne las voces de diez escritores cubano-canadienses que, desde diferentes ciudades y experiencias de vida, exploran los territorios íntimos de la inmigración, la identidad y la memoria.\n\nLos textos de Lizandro Arbolay, Ana Núñez González, María Karla Águila Díaz, Fernando Lobaina Quiala, Yansulier García Álvarez, Ihosvany Hernández González, Francisco García González, Lídice Megla, Hebert Poll Gutiérrez y Yordanis Domínguez Báez trazan un mapa literario de la experiencia migratoria.\n\nUn libro producido en tierra canadiense, pero lleno de cubanía.",
+		desc: "El árbol y la escarcha reúne las voces de diez escritores cubano-canadienses que exploran la inmigración, la identidad y la memoria.\n\nLos textos de Lizandro Arbolay, Ana Núñez González, María Karla Águila Díaz, Fernando Lobaina Quiala, Yansulier García Álvarez, Ihosvany Hernández González, Francisco García González, Lídice Megla, Hebert Poll Gutiérrez y Yordanis Domínguez Báez trazan un mapa literario de la experiencia migratoria.\n\nUn libro producido en tierra canadiense, pero lleno de cubanía.",
 		autoresAntologia: [
 			"Lizandro Arbolay",
 			"Ana Núñez González",

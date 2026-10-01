@@ -5,41 +5,15 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { libros } from '../data/libros';
 
 const recentPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
 
-// Libros recientes — reemplaza con los datos reales de tus 3 últimas publicaciones
-const librosRecientes = [
-	{
-		title: "El árbol y la escarcha",
-		author: "Ana Núñez González · Norge Céspedes (eds.)",
-		year: 2026,
-		genre: "Antología",
-		amazonUrl: "https://www.amazon.ca/dp/2925627005",
-		cover: "/images/portadas-web/el-arbol-y-la-escarcha-cubierta.jpg",
-		square: false,
-	},
-	{
-		title: "No me preguntes cuándo",
-		author: "Arturo Arango",
-		year: 2026,
-		genre: "Narrativa",
-		amazonUrl: "https://www.amazon.ca/dp/2925627021",
-		cover: "/images/portadas-web/no-me-preguntes-cuando-arturo-arango-cubierta.jpg",
-		square: false,
-	},
-	{
-		title: "Rómpete una pierna",
-		author: "Norge Céspedes",
-		year: 2026,
-		genre: "Narrativa",
-		amazonUrl: "https://www.amazon.ca/dp/2925627064",
-		cover: "/images/portadas-web/rompete-una-pierna-norge-cespedes-cubierta.jpg",
-		square: false,
-	},
-];
+const librosRecientes = [...libros]
+	.sort((a, b) => b.year - a.year)
+	.slice(0, 3);
 ---
 
 <!doctype html>
@@ -133,7 +107,7 @@ const librosRecientes = [
 				<div class="books-grid">
 					{librosRecientes.map(libro => (
 						<article class="book-card" data-square={libro.square ? "true" : "false"}>
-							<a href={libro.amazonUrl} target="_blank" rel="noopener" class="book-cover-link">
+							<a href={`/libros/${libro.slug}`} class="book-cover-link">
 								{libro.cover
 									? <img src={libro.cover} alt={`Portada de ${libro.title}`} class="book-cover" loading="lazy" />
 									: <div class="book-cover-placeholder"><span>{libro.title[0]}</span></div>
@@ -141,11 +115,18 @@ const librosRecientes = [
 							</a>
 							<div class="book-info">
 								<span class="book-genre">{libro.genre}</span>
-								<h3 class="book-title">{libro.title}</h3>
+								<h3 class="book-title">
+									<a href={`/libros/${libro.slug}`}>{libro.title}</a>
+								</h3>
 								<p class="book-author">{libro.author} · {libro.year}</p>
-								<a href={libro.amazonUrl} target="_blank" rel="noopener" class="btn-amazon">
-									Ver en Amazon →
-								</a>
+								<div class="book-btns">
+									<a href={`/libros/${libro.slug}`} class="btn-ficha">
+										Ver ficha →
+									</a>
+									<a href={libro.amazonUrl} target="_blank" rel="noopener" class="btn-amazon-sec">
+										Amazon ↗
+									</a>
+								</div>
 							</div>
 						</article>
 					))}
@@ -288,10 +269,15 @@ const librosRecientes = [
 .book-cover-placeholder span { font-family: var(--font-heading); font-size: 5rem; color: rgba(255,255,255,0.25); }
 .book-info { padding: 1.25rem; }
 .book-genre { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 700; }
-.book-title { font-size: 1.05rem; margin: 0.25rem 0; color: var(--color-primary); }
+.book-title { font-size: 1.05rem; margin: 0.25rem 0; }
+.book-title a { color: var(--color-primary); }
+.book-title a:hover { color: var(--color-accent); }
 .book-author { color: var(--color-muted); font-size: 0.85rem; margin: 0 0 0.75rem; }
-.btn-amazon { font-size: 0.85rem; font-weight: 600; color: var(--color-secondary); }
-.btn-amazon:hover { color: var(--color-accent); }
+.book-btns { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.btn-ficha { font-size: 0.85rem; font-weight: 700; color: white; background: var(--color-primary); padding: 0.4rem 0.9rem; border-radius: 4px; white-space: nowrap; }
+.btn-ficha:hover { background: var(--color-secondary); }
+.btn-amazon-sec { font-size: 0.8rem; font-weight: 500; color: var(--color-muted); }
+.btn-amazon-sec:hover { color: var(--color-accent); }
 
 /* PREMIO BANNER */
 .premio-banner {
