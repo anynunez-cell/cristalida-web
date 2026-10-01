@@ -36,7 +36,8 @@ const _libros: Omit<Libro, 'slug'>[] & { slug?: string }[] = [
 		genre: "Narrativa",
 		amazonUrl: A + "2925627064",
 		cover: P + "rompete-una-pierna-norge-cespedes-cubierta.jpg",
-		desc: "Anécdotas de bambalinas del escritor y periodista cubano Norge Céspedes Díaz.",
+		isbn: "9782925627067",
+		desc: "En Rómpete una pierna..., cerca de doscientas anécdotas nos invitan a mirar el teatro desde un lugar pocas veces visible: entre bambalinas. Todo sucede: accidentes, olvidos de textos, encuentros descabezados con el público y otras situaciones insólitas que transcurren de una manera divertida o conmovedora, siempre significativa. Pero lo más importante de este libro es que rescata una parte de la memoria oral del teatro cubano, que, sin él, correría el riesgo de perderse. Un libro para quienes aman tanto lo que sucede en el escenario como detrás de este.",
 	},
 	{
 		title: "El árbol y la escarcha",
