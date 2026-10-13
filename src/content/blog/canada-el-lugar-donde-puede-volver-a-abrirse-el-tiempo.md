@@ -18,6 +18,31 @@ Se dice que cuanto más desacostumbradas sean las situaciones a las que tengamos
 
 ---
 
+## En busca de mi YO perdido
+### María Karla Águila Díaz
+
+Emigrar ha sido aprender a vivir lejos de mí. No quisiera decir que no estoy conmigo; más bien es que dejé de caminar con todas mis partes. Camino como si me faltase un brazo y me las ingenio para que nadie lo note.
+
+Dejé Cuba, pero a veces vuelve en una palabra, en un olor, en algo que quisiera contar.
+
+Antes escribía sin pensar tanto; ahora hay cosas que no sé cómo nombrar.
+
+Entre otro idioma, otra cultura, me he ido quedando callada.
+
+No porque ya no tenga nada que decir, sino porque apenas encuentro dónde empezar.
+
+Paso los días resolviendo la vida y dejo para después contar lo que siento, lo que extraño.
+
+Y cuando por fin me siento a escribir, me cuesta reconocer mi propia voz, mi nueva voz. No me reconozco.
+
+Quizás emigrar también haya sido eso: volverme un poco extranjera en mis palabras.
+
+Quiero esta vida que estoy construyendo, aunque a veces me falte dentro de ella.
+
+Escribo para buscarme, para ver si entre lo que dejé y lo que soy al fin me encuentro.
+
+---
+
 ## Desde el desfase
 ### Lizandro Arbolay
 
