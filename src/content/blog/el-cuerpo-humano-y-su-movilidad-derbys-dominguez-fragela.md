@@ -45,4 +45,4 @@ El cuerpo humano, herramienta móvil y su locomoción, ha ido, desde el primer �
 
 ---
 
-*Tomado de Hispanophone*
+*Tomado de [Hispanophone](https://hispanophone.ca/2026/10/15/el-cuerpo-humano-y-su-movilidad-cuando-cuba-es-una-provincia-de-canada/)*
